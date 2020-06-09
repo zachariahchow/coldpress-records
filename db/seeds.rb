@@ -149,4 +149,25 @@ song23APianoInTheBasement = Song.new(album_id: 2, title: "A Piano In The Basemen
 
 song23APianoInTheBasement.save
 
-##
+##False Plaintiff
+
+artist3 = Artist.new(name: 'False Plaintiff', genre: "Alternative/Emo/Spoken Word", origin: "Singapore", bio: "
+Brandon Tanoto - Vocals
+Bryner Tan - Guitars
+Nicholas Phang - Guitars
+Jonathan Vincent - Bass
+Sydney Long - Drums", facebook_url: 'https://www.facebook.com/falseplaintiff/', bandcamp_url: 'https://falseplaintiff.bandcamp.com/', thumbnail_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t1.0-9/36764631_2016613898372988_1077095497673474048_n.jpg?_nc_cat=102&_nc_sid=85a577&_nc_oc=AQlEjYcd72WlYj1zHQ_YmmAw4zbb14b7jcvGjbEZN-wnh9yON9jL2vynXLGSZC-ZNjs&_nc_ht=scontent.fsin3-1.fna&oh=ed1c4701be7b424a8b9ef0405d3bdb27&oe=5F0444F8', banner_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t1.0-9/s960x960/36844526_2015239001843811_3049879413878423552_o.jpg?_nc_cat=105&_nc_sid=9e2e56&_nc_oc=AQkGOwUgD6qYbPquAiZOwjk6BJtiWsXgeQ8j8eg8NxMCueuL0lU2u0zazpC7tH4XTMk&_nc_ht=scontent.fsin3-1.fna&_nc_tp=7&oh=0c7c61c0eb976d5fa2ab5698b079ff00&oe=5F0650C0', instagram_url: 'https://www.instagram.com/falseplaintiff', youtube_url: 'https://www.youtube.com/watch?v=yf6HSIIvUjw', spotify_url: 'https://open.spotify.com/artist/5M0kuVo4s6eHB4aWT2JLqw')
+
+artist3.save
+
+##False Plaintiff - Hive Mind (Single)
+
+album3HiveMindSingle = Album.new(artist_id: 3, name: "Hive Mind (Single)", year_released: 2017, description: "Recorded, mixed and mastered by Aeonix Productions", cover_img: "https://f4.bcbits.com/img/a1264668808_16.jpg", bandcamp_url: "https://lapetitemortlittledeath.bandcamp.com/", bandcamp_album_code: "1272170655")
+
+album3HiveMindSingle.save
+
+##Hive Mind Songs
+
+song24HiveMind = Song.new(album_id: 3, title: "Hive Mind", album_position: 1, bandcamp_url: "https://falseplaintiff.bandcamp.com/track/hive-mind")
+
+song24HiveMind.save
