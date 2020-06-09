@@ -21,4 +21,14 @@ class AlbumsController < ApplicationController
       }
     end
   end
+
+  def show_latest
+    @albums = Album.order(year_released: :desc).take(6);
+
+    respond_to do |format|
+      format.json {
+          render :json => @albums
+      }
+    end
+  end
 end
