@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  album: one
+  album_position: 1
+  bandcamp_url: MyText
+  soundcloud_url: MyText
+  youtube_url: MyText
+  spotify_url: MyText
+  thumbnail_img: MyText
+
+two:
+  album: two
+  album_position: 1
+  bandcamp_url: MyText
+  soundcloud_url: MyText
+  youtube_url: MyText
+  spotify_url: MyText
+  thumbnail_img: MyText
