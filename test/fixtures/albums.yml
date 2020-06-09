@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist: one
+  name: MyString
+  year_released: 1
+  description: MyText
+  cover_img: MyText
+
+two:
+  artist: two
+  name: MyString
+  year_released: 1
+  description: MyText
+  cover_img: MyText
