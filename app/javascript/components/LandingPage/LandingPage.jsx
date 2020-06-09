@@ -32,6 +32,27 @@ const LandingPage = () => {
         error: null
     })
 
+    const [latestAlbums, setLatestAlbums] = useState([]);
+
+    const getLatestAlbums = () => {
+        fetch('/albums/latest.json', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => {
+            return res.json()
+        }).then(resData => {
+            setLatestAlbums(resData);
+        })
+    }
+
+    useEffect(() => {
+        getLatestAlbums();
+    }, []);
+
+    useEffect(() => {
+        console.log(latestAlbums);
+    }, [latestAlbums]);
+
     //CSS classes
 
     return (
@@ -40,6 +61,7 @@ const LandingPage = () => {
                 <LandingHeader />
             </div>
             <LandingBanner />
+            <LatestReleases latestAlbums={latestAlbums}/>
         </div>
     );
 }
