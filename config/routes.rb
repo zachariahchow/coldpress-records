@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'songs/index'
-  get 'songs/show'
-  get 'albums/index'
-  get 'albums/show'
+  get 'songs', to: 'songs#index'
+  get 'songs/:id', to: 'songs#show'
+  get 'albums', to: 'albums#index'
+  get 'albums/:id', to: 'albums#show'
   get 'artists', to: 'artist#index'
   get 'artists/:id', to: 'artist#show'
   root 'home#index'
