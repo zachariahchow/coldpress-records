@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Header from './Layout/Header';
-import LandingBanner from './LandingPage/LandingBanner';
-import LandingPage from './LandingPage/LandingPage';
+import LandingBanner from './LandingBanner';
+import LatestReleases from './LatestReleases';
+import LandingHeader from './LandingHeader';
 
-const App = () => {
+const LandingPage = () => {
 
     //Reducers
 
@@ -33,17 +33,15 @@ const App = () => {
     })
 
     //CSS classes
-    const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-start', 'items-center'];
 
     return (
-        <main className={mainClasses.join(' ')}>
-            <BrowserRouter >
-                <Route exact path="/" component={LandingPage} />
-                <Route path="/artists" component={Header}/>
-                <Route path="/artists" component={LandingBanner}/>
+        <BrowserRouter >
+                <div className="header-nav__container flex flex-col justify-around items-center w-full">
+                    <Route path="/" component={LandingHeader}/>
+                </div>
+                <Route path="/" component={LandingBanner}/>
             </BrowserRouter>
-        </main>
     );
 }
 
-export default App;
+export default LandingPage;
