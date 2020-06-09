@@ -7,6 +7,7 @@ class ArtistController < ApplicationController
       format.json {
           render :json => @artists
       }
+      format.html { redirect_to("/") }
     end
   end
 
@@ -20,6 +21,7 @@ class ArtistController < ApplicationController
       format.json {
           render :json => artistInfo
       }
+      format.html { redirect_to("/") }
     end
   end
 end
