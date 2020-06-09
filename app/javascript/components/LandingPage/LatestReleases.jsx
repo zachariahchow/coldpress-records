@@ -5,18 +5,18 @@ const LatestReleases = ({ latestAlbums }) => {
     //CSS classes
 
     const latestAlbumsEls = latestAlbums.map(album =>
-        <div className="album-name__header">
-            <p className="album-name__text">{album.name}</p>
-            <iframe className="latest-albums__iframe" src="https://bandcamp.com/EmbeddedPlayer/album=160009397/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href={album.bandcamp_url}>Moirai</a></iframe>
+        <div className="album-container flex flex-col justify-center items-center w-auto">
+            <p className="album-name__text text-center my-2 flex flex-col justify-center items-center"><span className="italic">{album.name}</span> <span className="font-bold">{album.artist_name}</span></p>
+            <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/album=${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`} seamless><a href={album.bandcamp_url}>{album.name}</a></iframe>
         </div>
     )
 
     return (
-        <div className="latest-releases__container">
-            <h2 className="latest-releases__header">
-                <p className="latest-releases__header-text">Latest Releases</p>
+        <div className="latest-releases__container w-full flex flex-col justify-around items-center py-2">
+            <h2 className="latest-releases__header w-1/2 text-xl tracking-wider text-center">
+                <p className="latest-releases__header-text text-center text-2xl uppercase tracking-widest py-4 mb-2">Latest Releases</p>
             </h2>
-            <div className="latest-releases-albums__container">
+            <div className="latest-releases-albums__container w-full flex sm:flex-row sm:justify-around sm:items-around flex-col justify-around items-center">
                 {latestAlbumsEls}
             </div>
         </div>
