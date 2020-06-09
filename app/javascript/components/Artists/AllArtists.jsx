@@ -14,6 +14,11 @@ const AllArtists = ({ allArtistsData }) => {
 
     return (
         <div className="all-artists__container">
+            <div className="all-artists__header flex justify-center items-center w-full">
+                <h2 className="all-artists__header-text uppercase tracking-widest text-2xl py-2">
+                    Artists
+                </h2>
+            </div>
             {allArtistEls}
         </div>
     );
