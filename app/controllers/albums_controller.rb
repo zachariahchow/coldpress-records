@@ -23,7 +23,7 @@ class AlbumsController < ApplicationController
   end
 
   def show_latest
-    @albums = Album.order(year_released: :desc).take(6);
+    @albums = Album.select('albums.*, artists.name as artist_name').joins(:artist).order(year_released: :desc).take(6)
 
     respond_to do |format|
       format.json {
