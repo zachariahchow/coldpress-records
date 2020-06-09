@@ -5,6 +5,7 @@ import Header from './Layout/Header';
 import LandingBanner from './LandingPage/LandingBanner';
 import LandingPage from './LandingPage/LandingPage';
 import AllArtists from './Artists/AllArtists';
+import ArtistBio from './Artists/ArtistBio';
 
 const App = () => {
 
@@ -66,6 +67,7 @@ const App = () => {
                 <Route path="/" component={Header}/>
                 </Switch>
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
+                <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
             </BrowserRouter>
         </main>
     );

@@ -16,7 +16,7 @@ const LandingHeader = () => {
                 <p className="landing-header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
             </div>
             <div className={"landing-logo__container " + logoContainerClasses.join(' ')}>
-                <img className="object-contain" src={logo} alt="Cold Press Logo"/>
+                <a href="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></a>
             </div>
         </header>
     );

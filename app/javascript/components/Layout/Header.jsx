@@ -16,7 +16,7 @@ const Header = () => {
                 <p className="header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
             </div>
             <div className={"logo__container " + logoContainerClasses.join(' ')}>
-                <img className="object-contain" src={logo} alt="Cold Press Logo"/>
+                <a href="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></a>
             </div>
         </header>
     );
