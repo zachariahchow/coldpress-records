@@ -1,0 +1,23 @@
+import React from 'react';
+import logo from '../../images/coldpress-logo.jpeg';
+import Nav from './Nav';
+
+const Header = () => {
+
+    //CSS Classes
+    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200'];
+    const logoContainerClasses = ['w-1/4', 'h-auto', ];
+    //
+
+    return (
+        <header className={headerClasses.join(' ')}>
+            <Nav />
+            <div className="header__content flex justify-center items-center"><p className="header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p></div>
+            <div className={"logo__container " + logoContainerClasses.join(' ')}>
+                <img className="object-contain" src={logo} alt="Cold Press Logo"/>
+            </div>
+        </header>
+    );
+}
+
+export default Header;

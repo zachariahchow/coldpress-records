@@ -1,3 +1,18 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+		list-style: none;
+}
+
+header {
+		min-height: 10vh;
+}
+
+.logo__container {
+		max-width: 150px;
+		max-height: 150px;
+		min-width: 75px;
+		min-height: 75px;
+}

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Layout/Header';
-import Nav from './Layout/Nav';
 
 const App = () => {
 
@@ -31,11 +30,15 @@ const App = () => {
         error: null
     })
 
+    //CSS classes
+    const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-between', 'items-center'];
+
     return (
-        <main>
+        <main className={mainClasses.join(' ')}>
             <BrowserRouter >
-                <Route path="/" component={Header}/>
-                <Route path="/" component={Nav}/>
+                <div className="header-nav__container flex flex-col justify-around items-center w-full">
+                    <Route path="/" component={Header}/>
+                </div>
             </BrowserRouter>
         </main>
     );
