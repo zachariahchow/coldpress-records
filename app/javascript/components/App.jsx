@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from './Layout/Header';
 import LandingBanner from './LandingPage/LandingBanner';
@@ -38,9 +38,10 @@ const App = () => {
     return (
         <main className={mainClasses.join(' ')}>
             <BrowserRouter >
-                <Route exact path="/" component={LandingPage} />
-                <Route path="/artists" component={Header}/>
-                <Route path="/artists" component={LandingBanner}/>
+                <Switch>
+                <Route path="/" exact component={LandingPage} />
+                <Route path="/" component={Header}/>
+                </Switch>
             </BrowserRouter>
         </main>
     );

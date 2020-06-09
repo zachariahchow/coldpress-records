@@ -35,12 +35,12 @@ const LandingPage = () => {
     //CSS classes
 
     return (
-        <BrowserRouter >
-                <div className="header-nav__container flex flex-col justify-around items-center w-full">
-                    <Route path="/" component={LandingHeader}/>
-                </div>
-                <Route path="/" component={LandingBanner}/>
-            </BrowserRouter>
+        <div>
+            <div className="header-nav__container flex flex-col justify-around items-center w-full">
+                <LandingHeader />
+            </div>
+            <LandingBanner />
+        </div>
     );
 }
 
