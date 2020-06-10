@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_082717) do
+ActiveRecord::Schema.define(version: 2020_06_10_083113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(version: 2020_06_10_082717) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "product_options", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "option_id", null: false
+    t.integer "stock"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["option_id"], name: "index_product_options_on_option_id"
+    t.index ["product_id"], name: "index_product_options_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "artist_id", null: false
     t.string "name"
@@ -84,6 +95,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_082717) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "product_options", "options"
+  add_foreign_key "product_options", "products"
   add_foreign_key "products", "artists"
   add_foreign_key "songs", "albums"
 end
