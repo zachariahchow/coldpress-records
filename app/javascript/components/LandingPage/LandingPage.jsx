@@ -56,7 +56,7 @@ const LandingPage = () => {
     //CSS classes
 
     return (
-        <div>
+        <div className="content__container w-full flex flex-col justify-around items-center">
             <div className="header-nav__container flex flex-col justify-around items-center w-full">
                 <LandingHeader />
             </div>
