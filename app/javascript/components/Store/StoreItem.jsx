@@ -53,6 +53,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
             <div className="store-item-options__container display flex justify-center items-center w-full py-4">
                 {productOptionEls}
             </div>
+            <button className="store-item-add__btn btn-primary">Add to Cart</button>
         </div>
     );
 }

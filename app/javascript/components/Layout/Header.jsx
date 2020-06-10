@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/coldpress-logo.jpeg';
+import cartIcon from '../../images/cart-icon.png';
 import Nav from './Nav';
 
 const Header = () => {
@@ -17,6 +19,9 @@ const Header = () => {
             </div>
             <div className={"logo__container " + logoContainerClasses.join(' ')}>
                 <a href="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></a>
+            </div>
+            <div className="cart-icon__container">
+                <Link to="/cart"><img className="object-contain" src={cartIcon} alt="Cart Icon"/></Link>
             </div>
         </header>
     );

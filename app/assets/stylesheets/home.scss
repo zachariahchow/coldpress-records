@@ -33,6 +33,13 @@ header {
 		min-height: 150px;
 }
 
+.cart-icon__container {
+		max-width: 75px;
+		max-height: 75px;
+		min-width: 50px;
+		min-height: 50px;
+}
+
 .latest-albums__iframe {
 		width: 350px;
 		height: 350px;
@@ -43,5 +50,4 @@ header {
 		min-height: 275px;
 		max-width: 550px;
 		max-height: 550px;
-
 }
