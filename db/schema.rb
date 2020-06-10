@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_083113) do
+ActiveRecord::Schema.define(version: 2020_06_10_090851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2020_06_10_083113) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "categories_products", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_categories_products_on_category_id"
+    t.index ["product_id"], name: "index_categories_products_on_product_id"
+  end
+
   create_table "options", force: :cascade do |t|
     t.string "name"
     t.string "value"
@@ -68,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_083113) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "thumbnail_img1"
     t.index ["option_id"], name: "index_product_options_on_option_id"
     t.index ["product_id"], name: "index_product_options_on_product_id"
   end
@@ -95,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_083113) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "categories_products", "categories"
+  add_foreign_key "categories_products", "products"
   add_foreign_key "product_options", "options"
   add_foreign_key "product_options", "products"
   add_foreign_key "products", "artists"
