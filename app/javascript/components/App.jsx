@@ -6,6 +6,7 @@ import LandingBanner from './LandingPage/LandingBanner';
 import LandingPage from './LandingPage/LandingPage';
 import AllArtists from './Artists/AllArtists';
 import ArtistBio from './Artists/ArtistBio';
+import Store from './Store/Store';
 
 const App = () => {
 
@@ -55,6 +56,28 @@ const App = () => {
         console.log(`All Artists: ${allArtists}`);
     }, [allArtists]);
 
+    const [allProducts, setAllProducts] = useState([]);
+
+    const getAllProducts = () => {
+        fetch('/products.json', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(res => {
+            return res.json()
+        }).then(resData => {
+            setAllProducts(resData);
+        })
+    }
+
+    useEffect(() => {
+        getAllProducts();
+    }, []);
+
+    useEffect(() => {
+        console.log(`All Products:`);
+        console.log(allProducts);
+    }, [allProducts]);
+
 
     //CSS classes
     const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-start', 'items-center'];
@@ -68,6 +91,7 @@ const App = () => {
                 </Switch>
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
+                <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts}/>} />
             </BrowserRouter>
         </main>
     );
