@@ -8,7 +8,7 @@ const CartPage = () => {
     //
 
     return (
-        <div className="cart__container">
+        <div className="cart-page__container w-full flex flex-col justify-center items-center">
             <Cart />
         </div>
     );
