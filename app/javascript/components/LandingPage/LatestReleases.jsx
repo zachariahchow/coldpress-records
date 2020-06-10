@@ -16,7 +16,7 @@ const LatestReleases = ({ latestAlbums }) => {
             <h2 className="latest-releases__header w-1/2 text-xl tracking-wider text-center">
                 <p className="latest-releases__header-text text-center text-2xl uppercase tracking-widest py-4 mb-2">Latest Releases</p>
             </h2>
-            <div className="latest-releases-albums__container px-2 w-full flex sm:flex-row sm:justify-around sm:items-around flex-col flex-wrap justify-around items-center">
+            <div className="latest-releases-albums__container px-2 w-full flex md:flex-row md:justify-around md:items-around flex-col flex-wrap justify-around items-center">
                 {latestAlbumsEls}
             </div>
         </div>

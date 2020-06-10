@@ -59,7 +59,7 @@ const ArtistBio = ({ artistData, match }) => {
                 <div className="artist-bio-album__container">
                     <div className="album-container flex flex-col justify-center items-center w-auto mx-4">
                         <p className="album-name__text text-center my-2 flex flex-col justify-center items-center"><span className="italic">{album.name}</span> <span className="font-bold">{album.artist_name}</span></p>
-                        <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/album=${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`} seamless><a href={album.bandcamp_url}>{album.name}</a></iframe>
+                        <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`} seamless><a href={album.bandcamp_url}>{album.name}</a></iframe>
                     </div>
                 </div>
             )}
