@@ -7,6 +7,7 @@ import LandingPage from './LandingPage/LandingPage';
 import AllArtists from './Artists/AllArtists';
 import ArtistBio from './Artists/ArtistBio';
 import Store from './Store/Store';
+import CartPage from './Cart/CartPage';
 
 const App = () => {
 
