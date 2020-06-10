@@ -228,10 +228,10 @@ product1 = Product.find_or_create_by(artist_id: 2, name: 'Disco 12" Vinyl Record
 
 product1.categories << Category.find(1)
 
-product1Option1 = ProductOption.find_or_create_by(product_id: 1, option_id: 1, stock: 100, price: 25, thumbnail_img1: "https://f4.bcbits.com/img/0015887246_10.jpg")
+product1Option1 = ProductOption.find_or_create_by(product_id: 1, option_id: 1, stock: 100, price: 25, thumbnail_img1: "https://f4.bcbits.com/img/0017669048_10.jpg")
 
 product2 = Product.find_or_create_by(artist_id: 1, name: 'Moirai 12" Vinyl Record')
 
 product2.categories << Category.find(1)
 
-product2Option2 = ProductOption.find_or_create_by(product_id: 2, option_id: 2, stock: 100, price: 32, thumbnail_img1: "https://f4.bcbits.com/img/0017669048_10.jpg")
+product2Option2 = ProductOption.find_or_create_by(product_id: 2, option_id: 2, stock: 100, price: 32, thumbnail_img1: "https://f4.bcbits.com/img/0015887246_10.jpg")
