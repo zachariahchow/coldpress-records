@@ -194,3 +194,44 @@ album4PatriotSingle = Album.new(artist_id: 4, name: "Patriot (Single)", year_rel
 Mastered by John Naclerio at Nada Recording in Montgomery, New York", cover_img: "https://f4.bcbits.com/img/a3681083127_16.jpg", bandcamp_url: "https://ssuneaterr.bandcamp.com/track/patriot", bandcamp_album_code: "track=460356673")
 
 album4PatriotSingle.save
+
+#####
+#####
+#####
+#####
+#####
+#####
+#####
+#####
+#####
+
+#####-----STORE--------#######
+
+##Categories
+
+category1 = Category.find_or_create_by(category_type: "vinyl/cds")
+category2 = Category.find_or_create_by(category_type: "apparel")
+category3 = Category.find_or_create_by(category_type: "accessories")
+category4 = Category.find_or_create_by(category_type: "sale")
+category5 = Category.find_or_create_by(category_type: "pre-orders")
+
+##Options Option.find_or_create_by(name: , value: )
+
+option1 = Option.find_or_create_by(name: "Press Variant", value: "Magenta Milk Marbled Vinyl (First Press: 500)")
+
+option2 = Option.find_or_create_by(name: "Press Variant", value: "Sea Blue with Bone Splatter Vinyl (First Press: 200)")
+
+##Products - Product.new(artist_id: , name: )
+### ProductOption.find_or_create_by()
+
+product1 = Product.find_or_create_by(artist_id: 2, name: 'Disco 12" Vinyl Record')
+
+product1.categories << Category.find(1)
+
+product1Option1 = ProductOption.find_or_create_by(product_id: 1, option_id: 1, stock: 100, price: 25, thumbnail_img1: "https://f4.bcbits.com/img/0015887246_10.jpg")
+
+product2 = Product.find_or_create_by(artist_id: 1, name: 'Moirai 12" Vinyl Record')
+
+product2.categories << Category.find(1)
+
+product2Option2 = ProductOption.find_or_create_by(product_id: 2, option_id: 2, stock: 100, price: 32, thumbnail_img1: "https://f4.bcbits.com/img/0017669048_10.jpg")
