@@ -10,11 +10,16 @@ const AllStoreItems = ({ productsData }) => {
 
     const storeItemEls = productsData.products.map(prod => {
 
+        const productOptions = productsData.product_options
+            .filter(option =>
+                option.artist_id == prod.artist_id
+            )
+
         const artist = productsData.artists
             .find(artist =>
                 prod.artist_id == artist.id)
 
-        return (<StoreItem productData={prod} artist={artist}/>)
+        return (<StoreItem productData={prod} productOptions={productOptions} artist={artist}/>)
     })
 
     return (
