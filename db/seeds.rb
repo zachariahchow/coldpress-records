@@ -30,7 +30,7 @@ With support from National Arts Council, Singapore.
 All songs written and performed by Sphaeras
 Track 8 ‘Ensemble’ written and performed by Sphaeras and Two Seas
 facebook.com/twoseasband
-twoseas.bandcamp.com", cover_img: "https://f4.bcbits.com/img/a2013052511_16.jpg", bandcamp_url: "http://sphaeras.bandcamp.com/album/moirai", bandcamp_album_code: "1429407341")
+twoseas.bandcamp.com", cover_img: "https://f4.bcbits.com/img/a2013052511_16.jpg", bandcamp_url: "http://sphaeras.bandcamp.com/album/moirai", bandcamp_album_code: "album=1429407341")
 
 album1Moirai.save
 
@@ -91,7 +91,7 @@ album2Disco = Album.new(artist_id: 2, name: "Disco", year_released: 2019, descri
   into, already way too inebriated. It’s wild, exhausting, loud, quiet, always looking for hold, a shoulder to lean on or to merely tap in hope of finding someone you know.
 
   DISCO was recorded in it’s entirety in the scorching summer of 2018 at Off The Road Studio Leipzig
-with Adam Lenox Jr (LINGUA NADA), mostly live and at night, because of unbearable temperatures by day.", cover_img: "https://f4.bcbits.com/img/a2467413321_16.jpg", bandcamp_url: "https://lapetitemortlittledeath.bandcamp.com/", bandcamp_album_code: "3061120412")
+with Adam Lenox Jr (LINGUA NADA), mostly live and at night, because of unbearable temperatures by day.", cover_img: "https://f4.bcbits.com/img/a2467413321_16.jpg", bandcamp_url: "https://lapetitemortlittledeath.bandcamp.com/", bandcamp_album_code: "album=3061120412")
 
 album2Disco.save
 
@@ -162,7 +162,7 @@ artist3.save
 
 ##False Plaintiff - Hive Mind (Single)
 
-album3HiveMindSingle = Album.new(artist_id: 3, name: "Hive Mind (Single)", year_released: 2017, description: "Recorded, mixed and mastered by Aeonix Productions", cover_img: "https://f4.bcbits.com/img/a1264668808_16.jpg", bandcamp_url: "https://lapetitemortlittledeath.bandcamp.com/", bandcamp_album_code: "1272170655")
+album3HiveMindSingle = Album.new(artist_id: 3, name: "Hive Mind (Single)", year_released: 2017, description: "Recorded, mixed and mastered by Aeonix Productions", cover_img: "https://f4.bcbits.com/img/a1264668808_16.jpg", bandcamp_url: "https://lapetitemortlittledeath.bandcamp.com/", bandcamp_album_code: "album=1272170655")
 
 album3HiveMindSingle.save
 
@@ -171,3 +171,26 @@ album3HiveMindSingle.save
 song24HiveMind = Song.new(album_id: 3, title: "Hive Mind", album_position: 1, bandcamp_url: "https://falseplaintiff.bandcamp.com/track/hive-mind")
 
 song24HiveMind.save
+
+##Patriot
+
+artist4 = Artist.new(name: 'Sun Eater', genre: "Alternative Rock", origin: "Sun Eater formed in 2017 and spent the next few months discovering their identity and evolving into the band they are today.
+
+Adding KC Meals (vocals, guitar) to the group, Brandon Hon (guitar), Qimin Ong (bass) and Luke Tang (drums) solidified the lineup and shared a common vision - to create their own diverse sound of groove, technicality, and melody.
+
+That vision came to light later that year when the band released their debut single 'Hindsight', recorded at Snakeweed Studios with local veteran and producer Leonard Soosay and mastered by Will Putney of Graphic Nature Audio in Belleville, New Jersey. Following that Sun Eater released their second single “Patriot”, which was also recorded by Soosay, and mastered by John Naclerio of Nada Recording Studio.
+
+The combination of anecdotal experience along with the issues that society faces is what Sun Eater attempts to convey through song. As such every performance, be it a small venue filled with diehard music fans or a large stage filled with people from all walks of life, is a raw emotional experience filled with explosive energy and riveting groove.
+
+Sun Eater has played on notable stages such as Aliwal Urban Arts Festival in 2019 and i Light Marina Bay in 2018.
+
+Not wanting to conform to the need for releasing an LP, Sun Eater is currently working towards making music that they can put out on a consistent basis.", facebook_url: 'https://www.facebook.com/ssuneaterr/', bandcamp_url: 'https://ssuneaterr.bandcamp.com/', thumbnail_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t1.0-9/s960x960/29133424_2056718174574619_2048600298116612096_o.jpg?_nc_cat=100&_nc_sid=2d5d41&_nc_oc=AQklBIbkZbKLS0g9qO4ycCNR55ppXPIE951cb7P0pUZrDyZnM8s6xLeBGMDlfza17QE&_nc_ht=scontent.fsin3-1.fna&_nc_tp=7&oh=2eaec2e8389dd932366814afb2467bea&oe=5F0549B4', banner_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t1.0-9/29133424_2056718174574619_2048600298116612096_o.jpg?_nc_cat=100&_nc_sid=2d5d41&_nc_oc=AQklBIbkZbKLS0g9qO4ycCNR55ppXPIE951cb7P0pUZrDyZnM8s6xLeBGMDlfza17QE&_nc_ht=scontent.fsin3-1.fna&oh=6307abcffd654d7d7c359f2b7260815a&oe=5F06E955', instagram_url: 'https://www.instagram.com/ssuneaterr', youtube_url: 'https://www.youtube.com/watch?v=ZxdXCIuLkwo&', spotify_url: 'https://open.spotify.com/artist/6hm01MFd7ylbd8d3WXn9Tp?si=hJMHv1wXRjijicWg9CIKag')
+
+artist4.save
+
+##Patriot (Single)
+
+album4PatriotSingle = Album.new(artist_id: 4, name: "Patriot (Single)", year_released: 2019, description: "Recorded, engineered and mixed by Leonard Soosay at Snakeweed Studios in Singapore
+Mastered by John Naclerio at Nada Recording in Montgomery, New York", cover_img: "https://f4.bcbits.com/img/a3681083127_16.jpg", bandcamp_url: "https://ssuneaterr.bandcamp.com/track/patriot", bandcamp_album_code: "track=460356673")
+
+album4PatriotSingle.save
