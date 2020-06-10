@@ -6,9 +6,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../components/App';
 
+const mainDiv = document.createElement('div');
+
+const mainDivClasses = ['main-div', 'w-full', 'flex', 'flex-col', 'justify-start', 'items-center'];
+
+mainDivClasses.forEach(cl =>
+    mainDiv.classList.add(cl)
+)
+
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         <App />,
-        document.body.appendChild(document.createElement('div')),
+        document.body.appendChild(mainDiv),
     )
 })
