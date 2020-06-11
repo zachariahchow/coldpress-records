@@ -31,6 +31,10 @@ const Tally = ({ cartData }) => {
         return acc;
     }, [])
 
+    const totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
+        return curOpt.productSubtotal + acc
+    }, null)
+
     const tallyInfoEls = productOptionsTallyInfo.map(prod =>
         <div className="product-tally-info__container">
             <div className="product-tally-info-name">
@@ -54,6 +58,11 @@ const Tally = ({ cartData }) => {
     return (
         <div className="tally__container w-full flex flex-col justify-center items-center">
             {tallyInfoEls}
+            <div className="tally-total__container">
+                <h2 className="tally-total__text">
+                    Total: {totalAmount}
+                </h2>
+            </div>
         </div>
     );
 }
