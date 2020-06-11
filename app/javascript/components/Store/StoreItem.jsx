@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
-const StoreItem = ({ productData, productOptions, artist }) => {
+const StoreItem = ({ productData, productOptions, artist, addToCartHandler }) => {
 
     const [productOptionData, setProductOptionData] = useState(productOptions);
 
     const [selectData, setSelectData] = useState({
         productId: productData.id,
-        optionId: null,
+        productOptionId: null,
         optionName: null,
-        optionValue: null
+        optionValue: null,
+        quantity: null
     });
 
     const optionSelectChangeHandler = (ev) => {
 
         const updatedSelectData = { ...selectData };
 
-        updatedSelectData.optionId = parseInt(ev.target.value);
+        updatedSelectData.productOptionId = parseInt(ev.target.value);
 
         const selectedOption = productOptionData.find(opt =>
             opt.option_id == ev.target.value
@@ -51,7 +52,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
             }
 
             acc.find(opt => opt.optionName == curOpt.option_name)
-                .values.push({ optionId: curOpt.option_id, optionValue: curOpt.value });
+                .values.push({ productOptionId: curOpt.id, optionValue: curOpt.value });
 
             return acc;
 
@@ -59,7 +60,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
 
     const productOptionEls = productOptionsArr.map(opt => {
         const options = opt.values.map(value =>
-            <option value={value.optionId} data-option-id={value.optionId} key={opt.values.indexOf(value) + 1}>{value.optionValue}</option>
+            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={opt.values.indexOf(value) + 1}>{value.optionValue}</option>
         )
 
         return (
@@ -75,7 +76,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
 
 
     return (
-        <div className="store-item__container w-full flex flex-col justify-around items-center sm:w-3/4">
+        <div className="store-item__container w-full flex flex-col justify-around items-center sm:w-3/4 mb-6">
             <div className="store-item__header flex flex-col justify-center items-center w-full">
                 <h2 className="store-item__header-text uppercase tracking-widest text-xl py-2">
                     {productData.name}
@@ -90,7 +91,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
             <div className="store-item-options__container display flex justify-center items-center w-full py-4">
                 {productOptionEls}
             </div>
-            <button className="store-item-add__btn btn-primary">Add to Cart</button>
+            <button className="store-item-add__btn btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded" onClick={addToCartHandler} data-product-option-id={selectData.productOptionId}>Add to Cart</button>
         </div>
     );
 }

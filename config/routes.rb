@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'cart', to: 'cart#show'
+  post 'add-to-cart', to: 'cart_details#create'
   get 'products', to: 'products#index'
   get 'products/:id', to: 'products#show'
   get 'songs', to: 'songs#index'
