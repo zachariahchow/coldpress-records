@@ -83,23 +83,27 @@ const App = () => {
 
     //
 
-    const [cartProducts, setcartProducts] = useState([]);
+    const [cartData, setCartData] = useState([]);
 
-    const getCartProducts = () => {
-        fetch('/products.json', {
+    const getCartData = () => {
+        fetch('/cart.json', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then(res => {
             return res.json()
         }).then(resData => {
-            setCartProducts(resData);
+            setCartData(resData);
         })
     }
 
     useEffect(() => {
-        console.log(`Cart Products:`);
-        console.log(cartProducts);
-    }, [cartProducts]);
+        getCartData();
+    }, []);
+
+    useEffect(() => {
+        console.log(`Cart Data:`);
+        console.log(cartData);
+    }, [cartData]);
 
 
     //CSS classes

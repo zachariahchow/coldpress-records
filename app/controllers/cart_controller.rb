@@ -1,6 +1,6 @@
 class CartController < ApplicationController
   def show
-    @customer_cart_info = {customer: @customer, cart: @cart}
+    @customer_cart_info = {customer: @customer, cart: @cart, cartDetails: @cart.cart_details }
 
     respond_to do |format|
       format.json {

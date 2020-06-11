@@ -1,6 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const StoreItem = ({ productData, productOptions, artist }) => {
+
+    const [productOptionData, setProductOptionData] = useState(productOptions);
+
+    const [selectData, setSelectData] = useState({
+        productId: productData.id,
+        optionId: null,
+        optionName: null,
+        optionValue: null
+    });
+
+    const optionSelectChangeHandler = (ev) => {
+
+        const updatedSelectData = { ...selectData };
+
+        updatedSelectData.optionId = parseInt(ev.target.value);
+
+        const selectedOption = productOptionData.find(opt =>
+            opt.option_id == ev.target.value
+        )
+
+        updatedSelectData.optionName = selectedOption.name;
+        updatedSelectData.optionValue = selectedOption.value;
+
+        console.log(updatedSelectData);
+
+        setSelectData(updatedSelectData);
+
+    }
+
+    useEffect(() => {
+        console.log("SELECT DATA");
+        console.log(selectData);
+    }, [selectData])
+
 
     //CSS Classes
 
@@ -17,7 +51,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
             }
 
             acc.find(opt => opt.optionName == curOpt.option_name)
-                .values.push(curOpt.value);
+                .values.push({ optionId: curOpt.option_id, optionValue: curOpt.value });
 
             return acc;
 
@@ -25,14 +59,17 @@ const StoreItem = ({ productData, productOptions, artist }) => {
 
     const productOptionEls = productOptionsArr.map(opt => {
         const options = opt.values.map(value =>
-            <option value={value} key={opt.values.indexOf(value) + 1}>{value}</option>
+            <option value={value.optionId} data-option-id={value.optionId} key={opt.values.indexOf(value) + 1}>{value.optionValue}</option>
         )
 
         return (
-            <select name={opt.optionName} id={opt.optionName} className="block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" key={productOptionsArr.indexOf(opt) + 1}>
-
-                {options}
-            </select>
+            <div className="select__container flex flex-col justify-around items-center w-full">
+                <h2 className="select__header mb-2">Select {opt.optionName}</h2>
+                <select name={opt.optionName} id={opt.optionName} data-product-id={productData.id} onChange={optionSelectChangeHandler} className="product-select block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" key={productOptionsArr.indexOf(opt) + 1}>
+                <option value={null} data-option-id={null} key={null}> </option>
+                    {options}
+                </select>
+            </div>
         )
     })
 
