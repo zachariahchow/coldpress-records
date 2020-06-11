@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const StoreItem = ({ productData, productOptions, artist, addToCartHandler }) => {
+const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cartData }) => {
 
     const [productOptionData, setProductOptionData] = useState(productOptions);
 

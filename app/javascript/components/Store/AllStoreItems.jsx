@@ -1,7 +1,7 @@
 import React from 'react';
 import StoreItem from './StoreItem';
 
-const AllStoreItems = ({ productsData, addToCartHandler }) => {
+const AllStoreItems = ({ productsData, addToCartHandler, cartData }) => {
 
     //CSS Classes
 
@@ -18,7 +18,7 @@ const AllStoreItems = ({ productsData, addToCartHandler }) => {
             .find(artist =>
                 prod.artist_id == artist.id)
 
-        return (<StoreItem productData={prod} productOptions={productOptions} artist={artist} addToCartHandler={addToCartHandler} key={productsData.products.indexOf(prod) + 1}/>)
+        return (<StoreItem productData={prod} productOptions={productOptions} artist={artist} addToCartHandler={addToCartHandler} cartData={cartData} key={productsData.products.indexOf(prod) + 1}/>)
     })
 
     return (
