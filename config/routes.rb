@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'cart', to: 'cart#show'
   post 'add-to-cart', to: 'cart_details#create'
   delete 'remove-from-cart/:cart_id/:product_option_id', to: 'cart_details#destroy'
+  patch 'edit-quantity/:cart_id/:product_option_id/:quantity', to: 'cart_details#update_quantity'
   get 'products', to: 'products#index'
   get 'products/:id', to: 'products#show'
   get 'songs', to: 'songs#index'

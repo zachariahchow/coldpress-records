@@ -153,6 +153,77 @@ const App = () => {
         })
     }
 
+    const incrementQuantityHandler = (ev) => {
+
+        console.log('Increment!');
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        const cartId = parseInt(ev.target.dataset.cartId);
+        const productOptionId = parseInt(ev.target.dataset.productOptionId);
+        const updatedCartData = { ...cartData }
+
+        let productOptionQty;
+
+        updatedCartData.cartDetails.forEach(det => {
+            if (det.product_option_id == productOptionId) {
+                det.quantity++;
+                productOptionQty = det.quantity;
+            }
+        });
+
+        setCartData(updatedCartData);
+
+        fetch(`/edit-quantity/${cartId}/${productOptionId}/${productOptionQty}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
+        }).then(res => {
+            getCartData();
+            return res.json();
+        }).then(resData => {
+            console.log(resData);
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+
+    const decrementQuantityHandler = (ev) => {
+
+        console.log('Decrement!');
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        const cartId = parseInt(ev.target.dataset.cartId);
+        const productOptionId = parseInt(ev.target.dataset.productOptionId);
+        const updatedCartData = { ...cartData }
+
+        let productOptionQty;
+
+        updatedCartData.cartDetails.forEach(det => {
+            if (det.product_option_id == productOptionId) {
+                if (det.quantity > 1) {
+                    det.quantity--;
+                    productOptionQty = det.quantity;
+
+                    setCartData(updatedCartData);
+
+                    fetch(`/edit-quantity/${cartId}/${productOptionId}/${productOptionQty}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
+                    }).then(res => {
+                        getCartData();
+                        return res.json();
+                    }).then(resData => {
+                        console.log(resData);
+                    }).catch(e => {
+                        console.log(e);
+                    })
+                }
+            }
+        });
+
+    }
+
     //
 
 
@@ -169,7 +240,7 @@ const App = () => {
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
-                <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler}/>} />
+                <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
             </BrowserRouter>
         </main>
     );
