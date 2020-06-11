@@ -17,6 +17,9 @@ const CartItem = ({ cartData, item, removeFromCartHandler, quantity, incrementQu
 
         <div className = "cart-product-option-name__container"> { item.option.name }: { item.option.value }
         </div>
+        <div className="cart-product-price__container">
+            <p className="cart-product-price">${parseInt(item.product_option.price).toFixed(2)}</p>
+        </div>
         <div className = "cart-product-quantity__container">
             <div className="num-block skin-6">
               <div className="num-in">
