@@ -1,5 +1,6 @@
 import React from 'react';
 import Cart from './Cart';
+import Tally from './Tally';
 
 const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler }) => {
 
@@ -14,6 +15,7 @@ const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, d
 
             </h2>
             <Cart cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>
+            <Tally />
         </div>
     );
 }
