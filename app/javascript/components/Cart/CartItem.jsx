@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CartItem = ({ cartData, item, removeFromCartHandler }) => {
+const CartItem = ({ cartData, item, removeFromCartHandler, quantity }) => {
 
     //CSS Classes
 
@@ -17,7 +17,7 @@ const CartItem = ({ cartData, item, removeFromCartHandler }) => {
 
         <div className = "cart-product-option-name__container"> { item.option.name }: { item.option.value }
         </div>
-        <div className = "cart-product-quantity__container">Quantity: { item.quantity }
+        <div className = "cart-product-quantity__container">Quantity: { quantity }
         </div>
         <button onClick={removeFromCartHandler} className="remove-from-cart__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded" data-cart-id={cartData.cart.id} data-product-option-id={item.product_option.id}>Remove From Cart
             </button>

@@ -7,20 +7,19 @@ const Cart = ({ cartData, removeFromCartHandler }) => {
 
     //
 
-    const cartDataArr = cartData.cartProducts.reduce((acc, curProd) => {
-        if (!acc.find(el => el.option.id == curProd.option.id)) {
-            curProd["quantity"] = 1;
-            acc.push(curProd);
-        } else {
-            acc.find(el => el.product.id == curProd.product.id).quantity++;
-        }
+    // const cartDataArr = cartData.cartProducts.reduce((acc, curProd) => {
+    //     if (!acc.find(el => el.option.id == curProd.option.id)) {
+    //         acc.push(curProd);
+    //     } else {
+    //         acc.find(el => el.product.id == curProd.product.id).quantity++;
+    //     }
 
-        return acc
-    }, []);
+    //     return acc
+    // }, []);
 
-    const cartProductEls = cartDataArr.map(prod => {
+    const cartProductEls = cartData.cartProducts.map(prod => {
         return (
-            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler}/>
+            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler} quantity={cartData.cartDetails.find(el => el.product_option_id == prod.product_option.id).quantity}/>
         )
     })
 
