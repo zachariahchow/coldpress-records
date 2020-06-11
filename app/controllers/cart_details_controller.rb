@@ -14,4 +14,8 @@ class CartDetailsController < ApplicationController
   def destroy
       CartDetail.where(cart_id: params[:cart_id], product_option_id: params[:product_option_id]).destroy_all
   end
+
+  def update_quantity
+    CartDetail.where(cart_id: params[:cart_id], product_option_id: params[:product_option_id]).update(quantity: params[:quantity])
+  end
 end
