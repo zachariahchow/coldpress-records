@@ -9,9 +9,6 @@ const Tally = ({ cartData }) => {
 
     //
 
-    const el = <div>{cartDetails[0].product_option_id}</div>
-    const el2 = <div>{cartProducts[0].product_option.id}</div>
-
     const productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
 
         const prodOption = cartProducts

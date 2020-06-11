@@ -226,6 +226,30 @@ const App = () => {
     }
 
     //
+    //#Customer Checkout Fields
+    const [customerFields, setCustomerFields] = useState({
+        email: null,
+        fullName: null,
+        billingAddress: null,
+        shippingAddress: null,
+        country: null,
+        phone: null,
+        status: 0,
+        deliveryMethod: null,
+        totalPrice: null
+    });
+
+    const customerFieldChangeHandler = (ev, field) => {
+        const updatedCustomerFields = { ...customerFields }
+        updatedCustomerFields[field] = ev.target.value;
+        setCustomerFields(updatedCustomerFields)
+    }
+
+    useEffect(() => {
+        console.log(customerFields);
+    }, [customerFields])
+
+    //
 
 
     //CSS classes
@@ -242,7 +266,7 @@ const App = () => {
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
                 <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
-                <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} />} />
+                <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields}/>} />
             </BrowserRouter>
         </main>
     );
