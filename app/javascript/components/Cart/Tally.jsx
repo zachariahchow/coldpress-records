@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Tally = ({ cartData }) => {
 
@@ -65,9 +66,11 @@ const Tally = ({ cartData }) => {
             </div>
 
             <div className="tally-checkout__btn-container">
+            <Link to='checkout'>
                 <button className="tally-checkout__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
                     Checkout
                 </button>
+            </Link>
             </div>
         </div>
     );
