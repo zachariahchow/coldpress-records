@@ -22,7 +22,7 @@ const AllStoreItems = ({ productsData, addToCartHandler, cartData }) => {
     })
 
     return (
-        <div className="all-store-items__container flex flex-col justify-around items-center">
+        <div key={cartData.cartDetails.length + 5} className="all-store-items__container flex flex-col justify-around items-center">
             <div className="all-store-items__header flex justify-center items-center w-full">
                 <h2 className="all-store-items__header-text bold tracking-widest text-2xl py-4">
                     All Items

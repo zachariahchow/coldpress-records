@@ -107,12 +107,11 @@ const App = () => {
         console.log(cartData);
     }, [cartData]);
 
+
+
     const addToCartHandler = (ev) => {
 
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-        console.log(cartData);
-        console.log(ev.target.dataset.productOptionId);
 
         fetch('/add-to-cart', {
             method: 'POST',
@@ -122,12 +121,14 @@ const App = () => {
                 product_option_id: parseInt(ev.target.dataset.productOptionId)
             })
         }).then(res => {
-            return res.json()
+            getCartData();
+            return res.json();
         }).then(resData => {
             console.log(resData);
         }).catch(e => {
             console.log(e);
         })
+
     }
 
     //

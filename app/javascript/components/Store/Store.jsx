@@ -8,7 +8,7 @@ const Store = ({ productsData, addToCartHandler, cartData }) => {
     //
 
     return (
-        <div className="all-store-items__container">
+        <div key={cartData.cartDetails.length + 4} className="all-store-items__container">
             <AllStoreItems productsData={productsData} addToCartHandler={addToCartHandler} cartData={cartData}/>
         </div>
     );

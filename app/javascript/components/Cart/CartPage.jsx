@@ -8,7 +8,7 @@ const CartPage = ({ cartData }) => {
     //
 
     return (
-        <div className="cart-page__container w-full flex flex-col justify-center items-center">
+        <div key={cartData.cartDetails.length + 2} className="cart-page__container w-full flex flex-col justify-center items-center">
             <Cart cartData={cartData}/>
         </div>
     );
