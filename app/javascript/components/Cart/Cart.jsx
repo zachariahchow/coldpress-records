@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CartItem from './CartItem';
 
-const Cart = ({ cartData }) => {
+const Cart = ({ cartData, removeFromCartHandler }) => {
 
     //CSS Classes
 
@@ -20,7 +20,7 @@ const Cart = ({ cartData }) => {
 
     const cartProductEls = cartDataArr.map(prod => {
         return (
-            <CartItem key={cartData.cartDetails.length + 7} item={prod} cartData={cartData}/>
+            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler}/>
         )
     })
 

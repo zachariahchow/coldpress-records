@@ -131,6 +131,28 @@ const App = () => {
 
     }
 
+    const removeFromCartHandler = (ev) => {
+
+        console.log('Remove from Cart!');
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        const cartId = parseInt(ev.target.dataset.cartId);
+        const productOptionId = parseInt(ev.target.dataset.productOptionId);
+
+        fetch(`/remove-from-cart/${cartId}/${productOptionId}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
+        }).then(res => {
+            getCartData();
+            return res
+        }).then(resData => {
+            console.log(resData);
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+
     //
 
 
@@ -147,7 +169,7 @@ const App = () => {
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
-                <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} />} />
+                <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler}/>} />
             </BrowserRouter>
         </main>
     );
