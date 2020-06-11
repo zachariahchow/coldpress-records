@@ -7,6 +7,7 @@ import LandingPage from './LandingPage/LandingPage';
 import AllArtists from './Artists/AllArtists';
 import ArtistBio from './Artists/ArtistBio';
 import Store from './Store/Store';
+import CartPage from './Cart/CartPage';
 
 const App = () => {
 
@@ -56,6 +57,8 @@ const App = () => {
         console.log(`All Artists: ${allArtists}`);
     }, [allArtists]);
 
+    //
+
     const [allProducts, setAllProducts] = useState([]);
 
     const getAllProducts = () => {
@@ -78,6 +81,10 @@ const App = () => {
         console.log(allProducts);
     }, [allProducts]);
 
+    //
+
+    //
+
 
     //CSS classes
     const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-start', 'items-center'];
@@ -92,6 +99,7 @@ const App = () => {
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts}/>} />
+                <Route path="/cart" exact render={(props) => <CartPage {...props} cartProducts={cartProducts} />} />
             </BrowserRouter>
         </main>
     );

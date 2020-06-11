@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../../images/coldpress-logo.jpeg';
+import cartIcon from '../../images/cart-icon.png';
 import Nav from '../Layout/Nav';
+import { Link } from 'react-router-dom';
 
 const LandingHeader = () => {
 
@@ -16,7 +18,10 @@ const LandingHeader = () => {
                 <p className="landing-header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
             </div>
             <div className={"landing-logo__container " + logoContainerClasses.join(' ')}>
-                <a href="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></a>
+                <Link to="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></Link>
+            </div>
+            <div className="cart-icon__container">
+                <Link to="/cart"><img className="object-contain" src={cartIcon} alt="Cart Icon"/></Link>
             </div>
         </header>
     );

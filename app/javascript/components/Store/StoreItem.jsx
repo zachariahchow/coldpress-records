@@ -1,6 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const StoreItem = ({ productData, productOptions, artist }) => {
+const StoreItem = ({ productData, productOptions, artist, addToCartHandler }) => {
+
+    const [productOptionData, setProductOptionData] = useState(productOptions);
+
+    const [selectData, setSelectData] = useState({
+        productId: productData.id,
+        productOptionId: null,
+        optionName: null,
+        optionValue: null,
+        quantity: null
+    });
+
+    const optionSelectChangeHandler = (ev) => {
+
+        const updatedSelectData = { ...selectData };
+
+        updatedSelectData.productOptionId = parseInt(ev.target.value);
+
+        const selectedOption = productOptionData.find(opt =>
+            opt.option_id == ev.target.value
+        )
+
+        updatedSelectData.optionName = selectedOption.name;
+        updatedSelectData.optionValue = selectedOption.value;
+
+        console.log(updatedSelectData);
+
+        setSelectData(updatedSelectData);
+
+    }
+
+    useEffect(() => {
+        console.log("SELECT DATA");
+        console.log(selectData);
+    }, [selectData])
+
 
     //CSS Classes
 
@@ -17,7 +52,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
             }
 
             acc.find(opt => opt.optionName == curOpt.option_name)
-                .values.push(curOpt.value);
+                .values.push({ productOptionId: curOpt.id, optionValue: curOpt.value });
 
             return acc;
 
@@ -25,20 +60,23 @@ const StoreItem = ({ productData, productOptions, artist }) => {
 
     const productOptionEls = productOptionsArr.map(opt => {
         const options = opt.values.map(value =>
-            <option value={value} key={opt.values.indexOf(value) + 1}>{value}</option>
+            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={opt.values.indexOf(value) + 1}>{value.optionValue}</option>
         )
 
         return (
-            <select name={opt.optionName} id={opt.optionName} className="block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" key={productOptionsArr.indexOf(opt) + 1}>
-
-                {options}
-            </select>
+            <div className="select__container flex flex-col justify-around items-center w-full">
+                <h2 className="select__header mb-2">Select {opt.optionName}</h2>
+                <select name={opt.optionName} id={opt.optionName} data-product-id={productData.id} onChange={optionSelectChangeHandler} className="product-select block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" key={productOptionsArr.indexOf(opt) + 1}>
+                <option value={null} data-option-id={null} key={null}> </option>
+                    {options}
+                </select>
+            </div>
         )
     })
 
 
     return (
-        <div className="store-item__container w-full flex flex-col justify-around items-center sm:w-3/4">
+        <div className="store-item__container w-full flex flex-col justify-around items-center sm:w-3/4 mb-6">
             <div className="store-item__header flex flex-col justify-center items-center w-full">
                 <h2 className="store-item__header-text uppercase tracking-widest text-xl py-2">
                     {productData.name}
@@ -53,6 +91,7 @@ const StoreItem = ({ productData, productOptions, artist }) => {
             <div className="store-item-options__container display flex justify-center items-center w-full py-4">
                 {productOptionEls}
             </div>
+            <button className="store-item-add__btn btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded" onClick={addToCartHandler} data-product-option-id={selectData.productOptionId}>Add to Cart</button>
         </div>
     );
 }
