@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CartItem from './CartItem';
 
-const Cart = ({ cartData }) => {
+const Cart = ({ cartData, removeFromCartHandler }) => {
 
     //CSS Classes
 
@@ -20,12 +20,12 @@ const Cart = ({ cartData }) => {
 
     const cartProductEls = cartDataArr.map(prod => {
         return (
-            <CartItem item={prod}/>
+            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler}/>
         )
     })
 
     return (
-        <div className="cart__container">
+        <div key={cartData.cartDetails.length + 3} className="cart__container">
             {cartProductEls}
         </div>
     );
