@@ -1,13 +1,23 @@
 import React from 'react';
 
-const CartItem = () => {
+const CartItem = ({ item }) => {
 
     //CSS Classes
 
     //
 
     return (
-        <div className="cart-item__container">
+        <div className="cart-product__container">
+            <div className="cart-product-name__container">
+                {item.product.name}
+            </div>
+
+            <div className="cart-product-option-name__container">
+                {item.option.name}: {item.option.value}
+            </div>
+            <div className="cart-product-quantity__container">
+                Quantity: {item.quantity}
+            </div>
         </div>
     );
 }
