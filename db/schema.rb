@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_163357) do
+ActiveRecord::Schema.define(version: 2020_06_11_163556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 2020_06_11_163357) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_option_id", null: false
+    t.integer "quantity"
+    t.decimal "unit_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_option_id"], name: "index_order_details_on_product_option_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "customer_email"
     t.string "customer_full_name"
@@ -152,6 +163,8 @@ ActiveRecord::Schema.define(version: 2020_06_11_163357) do
   add_foreign_key "carts", "customers"
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "product_options"
   add_foreign_key "product_options", "options"
   add_foreign_key "product_options", "products"
   add_foreign_key "products", "artists"
