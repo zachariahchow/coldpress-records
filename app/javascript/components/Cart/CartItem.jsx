@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CartItem = ({ cartData, item, removeFromCartHandler, quantity, incrementQuantityHandler }) => {
+const CartItem = ({ cartData, item, removeFromCartHandler, quantity, incrementQuantityHandler, decrementQuantityHandler }) => {
 
     //CSS Classes
 
@@ -20,7 +20,7 @@ const CartItem = ({ cartData, item, removeFromCartHandler, quantity, incrementQu
         <div className = "cart-product-quantity__container">
             <div className="num-block skin-6">
               <div className="num-in">
-                <span onClick={() => console.log('-')} className="minus dis">-</span>
+                <span onClick={decrementQuantityHandler} className="minus dis" data-cart-id={cartData.cart.id} data-product-option-id={item.product_option.id}>-</span>
                     <div className="quantity-display">Quantity: {quantity}</div>
                 <span onClick={incrementQuantityHandler} className="plus" data-cart-id={cartData.cart.id} data-product-option-id={item.product_option.id}>+</span>
               </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Cart from './Cart';
 
-const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler }) => {
+const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler }) => {
 
     //CSS Classes
 
@@ -13,7 +13,7 @@ const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler })
             <p className="latest-releases__header-text text-center text-2xl uppercase tracking-widest py-4 mb-2">Cart</p>
 
             </h2>
-            <Cart cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler}/>
+            <Cart cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>
         </div>
     );
 }
