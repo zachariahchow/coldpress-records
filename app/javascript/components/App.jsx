@@ -146,7 +146,7 @@ const App = () => {
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
-                <Route path="/cart" exact render={(props) => <CartPage {...props} cartProducts={cartProducts} />} />
+                <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} />} />
             </BrowserRouter>
         </main>
     );
