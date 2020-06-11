@@ -63,6 +63,12 @@ const Tally = ({ cartData }) => {
                     Total: {totalAmount}
                 </h2>
             </div>
+
+            <div className="tally-checkout__btn-container">
+                <button className="tally-checkout__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
+                    Checkout
+                </button>
+            </div>
         </div>
     );
 }
