@@ -6332,6 +6332,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-css-burger@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-css-burger/-/react-css-burger-0.2.0.tgz#6b85f6855c1c0d9af136e7043d5c21f3de565874"
+  integrity sha512-q2ifct44rVXvLmVr1NeOcMsaeKQWGFaTaUCicF0ynekM8kK5ATpizV2PurgP1hnQntbWRVizCqmKE9JwoDmZNA==
+
 react-dom@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"

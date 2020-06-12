@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/coldpress-logo.jpeg';
 import cartIcon from '../../images/cart-icon.png';
 import Nav from './Nav';
+import Burger from 'react-css-burger';
 
-const Header = () => {
+const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
+
 
     //CSS Classes
     const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200'];
@@ -13,6 +15,14 @@ const Header = () => {
 
     return (
         <header className={headerClasses.join(' ')}>
+            <Burger
+              onClick={toggleMenuHandler}
+              active={isMenuOpen}
+              burger="emphatic"
+              color="black"
+              hoverOpacity={0.8}
+              scale={1.2}
+            />
             <Nav />
             <div className="header__content flex justify-center items-center">
                 <p className="header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
