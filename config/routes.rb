@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'confirm-order', to: 'orders#create'
   get 'orders/create'
   get 'orders/destroy'
   get 'orders/show'

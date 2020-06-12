@@ -249,7 +249,23 @@ const App = () => {
         console.log(customerFields);
     }, [customerFields])
 
-    //
+    //##Confirm Order / Cart Checkout
+    const confirmOrderHandler = (ev, orderData) => {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        fetch('/confirm-order', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+            body: JSON.stringify({ customer: customerFields, order: orderData })
+        }).then(res => {
+            getCartData();
+            return res.json();
+        }).then(resData => {
+            console.log(resData);
+        }).catch(e => {
+            console.log(e);
+        })
+    }
 
 
     //CSS classes
@@ -266,7 +282,7 @@ const App = () => {
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
                 <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
-                <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields}/>} />
+                <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
             </BrowserRouter>
         </main>
     );
