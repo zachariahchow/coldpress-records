@@ -3,14 +3,37 @@
 
 <head>
 		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+		<style>
+		.customer-name {
+				font-size: 1.2rem;
+		}
+
+		.order-header {
+				text-decoration: underline;
+				font-size: 1rem;
+		}
+
+		.product {
+				margin-bottom: 0.6rem;
+		}
+
+		.option {
+				margin-top: 0.6rem;
+		}
+
+		.price-total {
+				font-weight: bold;
+		}
+		</style>
 </head>
 
 <body>
-		<h1>Thanks for your purchase,
-				<%= @order.customer_full_name %>
+		<h1>Thanks for your purchase, <br>
+				<span class="customer-name">
+						<%= @order.customer_full_name %><span>
 		</h1>
-		<p>
-				Your order details are as follows:
+		<p class="order-header">
+				Your order details are as follows
 		</p>
 		<% @order_details.each do |detail| %>
 		<p class="artist">
@@ -19,6 +42,7 @@
 		<p class="product">
 				<%= detail.product_option.product.name%>
 		</p>
+		<!-- <img class="product-thumbnail" src=<%=detail.product_option.thumbnail_img1%>> -->
 		<p class="option">
 				<%= detail.product_option.option.name%>:
 				<%=detail.product_option.option.value%>
@@ -28,14 +52,14 @@
 				<%= detail.quantity%>
 		</p>
 		<p class="price">
-				Price:
+				Price: $
 				<%= sprintf("%.2f", detail.unit_price)%>
 		</p>
 		<%end%>
 		<p class="price-total">Amount Paid: $
 				<%= sprintf("%.2f", @order.total_price)%>
 		</p>
-		<p>Have a great day!</p>
+		<h2 class="ending-greeting">Have a great day!</h2>
 </body>
 
 </html>
