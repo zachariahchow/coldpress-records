@@ -15,7 +15,7 @@ const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, d
 
             </h2>
             <Cart cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>
-            <Tally cartData={cartData}/>
+            <Tally key={Math.random * Math.random * 10} cartData={cartData}/>
         </div>
     );
 }

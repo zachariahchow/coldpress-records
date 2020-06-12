@@ -9,6 +9,7 @@ import ArtistBio from './Artists/ArtistBio';
 import Store from './Store/Store';
 import CartPage from './Cart/CartPage';
 import CheckoutPage from './Checkout/CheckoutPage';
+import ScrollToTop from './Utilities/ScrollToTop';
 
 const App = () => {
 
@@ -258,7 +259,7 @@ const App = () => {
             headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
             body: JSON.stringify({ customer: customerFields, order: orderData })
         }).then(res => {
-            getCartData();
+            setCartData([]);
             return res.json();
         }).then(resData => {
             console.log(resData);
@@ -274,6 +275,7 @@ const App = () => {
     return (
         <main className={mainClasses.join(' ')}>
             <BrowserRouter >
+                <ScrollToTop>
                 <Switch>
                 <Route path="/" exact component={LandingPage} />
                 <Route path="/" component={Header}/>
@@ -283,6 +285,7 @@ const App = () => {
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
                 <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
                 <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
+                </ScrollToTop>
             </BrowserRouter>
         </main>
     );
