@@ -30,6 +30,9 @@ const App = () => {
         }
     }
 
+    //UI States
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     //States
 
