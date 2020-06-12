@@ -21,6 +21,11 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields }) => {
                 <input type="text" name="country" id="country" placeholder="Country" defaultValue={customerFields.country} onChange={(e) => customerFieldChangeHandler(e, "country")}/>
                 <input type="text" name="phone" id="phone" placeholder="Phone Number" defaultValue={customerFields.phone} onChange={(e) => customerFieldChangeHandler(e, "phone")}/>
             </div>
+            <div className="checkout-form-confirm__btn-container">
+                <button className="checkout-form-confirm__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
+                    Confirm Order
+                </button>
+            </div>
         </div>
     );
 }
