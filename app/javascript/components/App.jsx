@@ -236,8 +236,7 @@ const App = () => {
         country: null,
         phone: null,
         status: 0,
-        deliveryMethod: null,
-        totalPrice: null
+        deliveryMethod: null
     });
 
     const customerFieldChangeHandler = (ev, field) => {
@@ -251,15 +250,15 @@ const App = () => {
     }, [customerFields])
 
     //##Confirm Order / Cart Checkout
-    const confirmOrderHandler = (ev, orderData) => {
+    const confirmOrderHandler = (ev, orderData, totalPrice) => {
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         fetch('/confirm-order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
-            body: JSON.stringify({ customer: customerFields, order: orderData })
+            body: JSON.stringify({ customer: customerFields, order: orderData, total_price: totalPrice })
         }).then(res => {
-            setCartData([]);
+            getCartData([]);
             return res.json();
         }).then(resData => {
             console.log(resData);

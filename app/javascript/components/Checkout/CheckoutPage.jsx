@@ -3,11 +3,14 @@ import CheckoutTally from './CheckoutTally';
 
 const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, confirmOrderHandler }) => {
 
+        let productOptionsTallyInfo;
+        let totalAmount;
+
         if (cartData) {
 
             const { cartDetails, cartProducts } = cartData
 
-            const productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
+            productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
 
                 const prodOption = cartProducts
                     .find(prod => {
@@ -29,11 +32,9 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                 return acc;
             }, [])
 
-            const totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
+            totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
                 return curOpt.productSubtotal + acc
             }, null)
-
-            productOptionsTallyInfo["total_amount"] = totalAmount;
 
         }
 
@@ -58,7 +59,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                     <input type="text" name="phone" id="phone" placeholder="Phone Number" defaultValue={customerFields.phone} onChange={(e) => customerFieldChangeHandler(e, "phone")}/>
                 </div> : null}
                 {cartData.cartProducts.length ? <div className="checkout-form-confirm__btn-container">
-                    <button onClick={(e) => confirmOrderHandler(e, productOptionsTallyInfo)}className="checkout-form-confirm__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
+                    <button onClick={(e) => confirmOrderHandler(e, productOptionsTallyInfo, totalAmount)}className="checkout-form-confirm__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
                         Confirm Order
                     </button>
                 </div> : null}
