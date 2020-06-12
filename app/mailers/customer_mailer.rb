@@ -1,5 +1,5 @@
 class CustomerMailer < ApplicationMailer
-  default from: 'coldpressrecordsdemo@gmail.com'
+  default from: ENV["MAIL_USERNAME"]
 
   def confirm_order_email
     @order = Order.find(params[:order_id])

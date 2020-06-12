@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
     end
 
     @cart.cart_details.destroy_all
+
+    CustomerMailer.with(order_id: Order.last.id).confirm_order_email.deliver_now
     end
 
   def show
