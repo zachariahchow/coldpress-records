@@ -52,7 +52,7 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
             }
 
             acc.find(opt => opt.optionName == curOpt.option_name)
-                .values.push({ productOptionId: curOpt.id, optionValue: curOpt.value });
+                .values.push({ productOptionId: curOpt.id, optionValue: curOpt.value, optionPrice: curOpt.price });
 
             return acc;
 
@@ -60,7 +60,7 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
 
     const productOptionEls = productOptionsArr.map(opt => {
         const options = opt.values.map(value =>
-            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={opt.values.indexOf(value) + 1}>{value.optionValue}</option>
+            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={opt.values.indexOf(value) + 1}>{`${value.optionValue} ($${parseInt(value.optionPrice).toFixed(2)})`}</option>
         )
 
         return (
