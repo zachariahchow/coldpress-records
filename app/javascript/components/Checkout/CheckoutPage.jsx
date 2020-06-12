@@ -33,7 +33,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
             }, [])
 
             totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
-                return curOpt.productSubtotal + acc
+                return curOpt.product_subtotal + acc
             }, null)
 
         }

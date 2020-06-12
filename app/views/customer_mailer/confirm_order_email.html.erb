@@ -14,23 +14,26 @@
 		</p>
 		<% @order_details.each do |detail| %>
 		<p class="artist">
-				<=% detail.product_option.product.artist.name%>
+				<%= detail.product_option.product.artist.name%>
 		</p>
 		<p class="product">
-				<=% detail.product_option.product.name%>
+				<%= detail.product_option.product.name%>
 		</p>
 		<p class="option">
-				<=% detail.product_option.option.name%>: <=% detail.product_option.option.value%>
+				<%= detail.product_option.option.name%>:
+				<%=detail.product_option.option.value%>
 		</p>
 		<p class="quantity">
-				Quantity: <=% detail.quantity%>
+				Quantity:
+				<%= detail.quantity%>
 		</p>
 		<p class="price">
-				Price: <=% detail.unit_price%>
+				Price:
+				<%= sprintf("%.2f", detail.unit_price)%>
 		</p>
 		<%end%>
 		<p class="price-total">Amount Paid: $
-				<%= @order.total_price%>
+				<%= sprintf("%.2f", @order.total_price)%>
 		</p>
 		<p>Have a great day!</p>
 </body>
