@@ -259,7 +259,7 @@ const App = () => {
             headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
             body: JSON.stringify({ customer: customerFields, order: orderData })
         }).then(res => {
-            getCartData();
+            setCartData([]);
             return res.json();
         }).then(resData => {
             console.log(resData);
