@@ -34,6 +34,10 @@ const App = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const toggleMenuHandler = () => {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
     //States
 
     const [httpState, dispatchHttp] = useReducer(httpReducer, {
