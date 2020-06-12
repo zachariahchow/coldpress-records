@@ -1,42 +1,43 @@
 import React from 'react';
+import CheckoutTally from './CheckoutTally';
 
 const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, confirmOrderHandler }) => {
 
-    const { cartDetails, cartProducts } = cartData
+        const { cartDetails, cartProducts } = cartData
 
-    const productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
+        const productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
 
-        const prodOption = cartProducts
-            .find(prod => {
-                return prod.product_option.id == curDet.product_option_id
-            });
+            const prodOption = cartProducts
+                .find(prod => {
+                    return prod.product_option.id == curDet.product_option_id
+                });
 
-        const prodOptionSubtotal = parseInt(prodOption.product_option.price) * curDet.quantity;
+            const prodOptionSubtotal = parseInt(prodOption.product_option.price) * curDet.quantity;
 
-        acc.push({
-            product_name: prodOption.product.name,
-            product_option_id: prodOption.product_option.id,
-            product_option: prodOption.option.value,
-            price: prodOption.product_option.price,
-            quantity: curDet.quantity,
-            product_subtotal: prodOptionSubtotal,
-            option_image: prodOption.product_option.thumbnail_img1
-        })
+            acc.push({
+                product_name: prodOption.product.name,
+                product_option_id: prodOption.product_option.id,
+                product_option: prodOption.option.value,
+                price: prodOption.product_option.price,
+                quantity: curDet.quantity,
+                product_subtotal: prodOptionSubtotal,
+                option_image: prodOption.product_option.thumbnail_img1
+            })
 
-        return acc;
-    }, [])
+            return acc;
+        }, [])
 
-    const totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
-        return curOpt.productSubtotal + acc
-    }, null)
+        const totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
+            return curOpt.productSubtotal + acc
+        }, null)
 
-    //CSS Classes
+        //CSS Classes
 
-    //
+        //
 
 
-    return (
-        <div className="checkout-page__container w-full flex flex-col justify-center items-center">
+        return (
+                <div className="checkout-page__container w-full flex flex-col justify-center items-center">
             <div className="checkout-page-header__container flex justify-center items-center w-full">
                 <h2 className="checkout-page-header uppercase tracking-widest text-2xl py-2">
                     Checkout
@@ -55,6 +56,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                     Confirm Order
                 </button>
             </div>
+            <CheckoutTally key={Math.random * 99} cartData={cartData}/>
         </div>
     );
 }
