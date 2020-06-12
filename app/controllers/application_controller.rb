@@ -4,8 +4,19 @@ class ApplicationController < ActionController::Base
   def current_shopping_cart
 
     if session[:customer]
-      @customer = session[:customer]
-      @cart = Cart.find(session[:cart])
+
+      if Customer.exists?(session[:customer])
+        @customer = Customer.find(session[:customer])
+      else
+        @customer = Customer.create
+      end
+
+      if Cart.exists?(session[:cart])
+        @cart = Cart.find(session[:cart])
+      else
+        @cart = Cart.create(customer_id: @customer.id)
+      end
+
     else
       @customer = Customer.create
       session[:customer] = @customer.id
