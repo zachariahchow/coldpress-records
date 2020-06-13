@@ -64,7 +64,7 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     return (
         <div className="content__container w-full flex flex-col justify-around items-center">
             <link rel="stylesheet" href="node_modules/react-responsive-carousel/lib/styles/carousel.min.css"/>
-            <div className="header-nav__container flex flex-col justify-around items-center w-full z-10">
+            <div className="header-nav__container flex flex-col justify-center items-center w-full z-10">
                 <LandingHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>
             </div>
             <div className="landing-carousel__container">

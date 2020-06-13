@@ -20,22 +20,22 @@ header {
 }
 
 .logo__container {
-		max-width: 150px;
-		max-height: 150px;
-		min-width: 75px;
-		min-height: 75px;
+		max-width: 100px;
+		max-height: 100px;
+		min-width: 50px;
+		min-height: 50px;
 }
 
 .landing-logo__container {
-		max-width: 280px;
-		max-height: 280px;
-		min-width: 150px;
-		min-height: 150px;
+		max-width: 350px;
+		max-height: 350px;
+		min-width: 200px;
+		min-height: 200px;
 }
 
 .cart-icon__container {
-		max-width: 75px;
-		max-height: 75px;
+		max-width: 70px;
+		max-height: 70px;
 		min-width: 50px;
 		min-height: 50px;
 }
@@ -57,10 +57,16 @@ header {
 		position: relative;
 		padding-right: 0.8rem;
 		z-index: 20;
+		padding-top: 4px !important;
+		margin: 0 !important;
+		position: absolute !important;
+		top: 16px !important;
+		left: 12px !important;
 }
 
 .header-landing {
-		max-height: 300px;
+		max-height: 420px;
+		background: linear-gradient(to bottom, black 0%, black 50%, #000000 50%, white 50%, white 100%);
 }
 
 .header-primary {
