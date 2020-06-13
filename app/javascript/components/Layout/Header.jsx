@@ -29,8 +29,8 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
                   hoverOpacity={0.8}
                   scale={0.8}
                 />
-                </div>
                 <Nav isMenuOpen={isMenuOpen}/>
+            </div>
             </div>
             <div className="header__content flex justify-center items-center">
                 <p className="header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
