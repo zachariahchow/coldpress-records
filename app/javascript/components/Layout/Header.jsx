@@ -13,13 +13,13 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     useOnClickOutside(node, () => setIsMenuOpen(false));
 
     //CSS Classes
-    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200 z-10'];
+    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'z-10'];
     const logoContainerClasses = ['w-1/4', 'h-auto'];
     //
 
     return (
-        <header className={headerClasses.join(' ')}>
-            <div className="burger-nav__ref-container z-20" ref={node}>
+        <header className={`header-primary ${headerClasses.join(' ')}`}>
+            <div className="burger-nav__ref-container z-20 flex items-center justify-center pb-4" ref={node}>
                 <Burger
                   onClick={toggleMenuHandler}
                   active={isMenuOpen}
@@ -36,7 +36,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
             <div className={"logo__container " + logoContainerClasses.join(' ')}>
                 <a href="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></a>
             </div>
-            <div className="cart-icon__container">
+            <div className="cart-icon__container flex justify-center items-center px-2 mr-4">
                 <Link to="/cart"><img className="object-contain" src={cartIcon} alt="Cart Icon"/></Link>
             </div>
         </header>

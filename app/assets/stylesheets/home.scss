@@ -16,7 +16,7 @@ body {
 }
 
 header {
-		min-height: 10vh;
+		min-height: 8vh;
 }
 
 .logo__container {
@@ -57,4 +57,12 @@ header {
 		position: relative;
 		padding-right: 0.8rem;
 		z-index: 20;
+}
+
+.header-landing {
+		max-height: 300px;
+}
+
+.header-primary {
+		max-height: 140px;
 }
