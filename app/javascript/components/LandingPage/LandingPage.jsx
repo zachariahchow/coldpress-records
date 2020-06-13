@@ -5,7 +5,7 @@ import LandingBanner from './LandingBanner';
 import LatestReleases from './LatestReleases';
 import LandingHeader from './LandingHeader';
 
-const LandingPage = () => {
+const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     //Reducers
 
@@ -57,8 +57,8 @@ const LandingPage = () => {
 
     return (
         <div className="content__container w-full flex flex-col justify-around items-center">
-            <div className="header-nav__container flex flex-col justify-around items-center w-full">
-                <LandingHeader />
+            <div className="header-nav__container flex flex-col justify-around items-center w-full z-10">
+                <LandingHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>
             </div>
             <LandingBanner />
             <LatestReleases latestAlbums={latestAlbums}/>

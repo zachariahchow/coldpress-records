@@ -9,13 +9,13 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
 
     //CSS Classes
-    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200'];
+    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200 z-10'];
     const logoContainerClasses = ['w-1/4', 'h-auto'];
     //
 
     return (
         <header className={headerClasses.join(' ')}>
-            <div className="burger__container px-2">
+            <div className="burger__container px-2 z-50">
             <Burger
               onClick={toggleMenuHandler}
               active={isMenuOpen}
