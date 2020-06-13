@@ -19,19 +19,17 @@ const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     return (
         <header className={headerClasses.join(' ')} >
-            <div className="burger-nav__ref-container" ref={node}>
-                <div className="burger__container px-2 z-50">
-                <Burger
-                  onClick={toggleMenuHandler}
-                  active={isMenuOpen}
-                  burger="emphatic"
-                  color="black"
-                  hoverOpacity={0.8}
-                  scale={0.8}
-                />
-                </div>
-                <Nav isMenuOpen={isMenuOpen}/>
-            </div>
+        <div className="burger-nav__ref-container z-20" ref={node}>
+            <Burger
+              onClick={toggleMenuHandler}
+              active={isMenuOpen}
+              burger="emphatic"
+              color="black"
+              hoverOpacity={0.8}
+              scale={0.8}
+            />
+            <Nav isMenuOpen={isMenuOpen}/>
+        </div>
             <div className="landing-header__content flex justify-center items-center">
                 <p className="landing-header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
             </div>
