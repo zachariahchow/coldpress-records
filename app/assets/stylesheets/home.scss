@@ -53,11 +53,16 @@ header {
 		height: 350px;
 }
 
-.artist-thumbnail__container {
-		min-width: 275px;
-		min-height: 275px;
-		max-width: 550px;
-		max-height: 550px;
+.artist-thumbnail {
+		width: 600px;
+		height: 340px;
+}
+
+@media (max-width: 640px) {
+		.artist-thumbnail {
+				width: 640px;
+				height: auto;
+		}
 }
 
 .burger_hamburger__21cuQ {
