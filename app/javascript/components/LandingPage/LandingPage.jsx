@@ -4,6 +4,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import LandingBanner from './LandingBanner';
 import LatestReleases from './LatestReleases';
 import LandingHeader from './LandingHeader';
+import Carousel from './Carousel';
+
+import bannerOne from '../../images/sphaeras-banner-1.jpg';
+import bannerTwo from '../../images/suneater-banner.jpg';
 
 const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
@@ -55,12 +59,20 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     //CSS classes
 
+    const bannerImages = [bannerOne, bannerTwo];
+
     return (
         <div className="content__container w-full flex flex-col justify-around items-center">
+            <link rel="stylesheet" href="node_modules/react-responsive-carousel/lib/styles/carousel.min.css"/>
             <div className="header-nav__container flex flex-col justify-around items-center w-full z-10">
                 <LandingHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>
             </div>
-            <LandingBanner />
+            <div className="landing-carousel__container">
+
+            </div>
+            <div className="carousel__container md:mt-8 w-full md:w-3/4">
+                <Carousel />
+            </div>
             <LatestReleases latestAlbums={latestAlbums}/>
         </div>
     );
