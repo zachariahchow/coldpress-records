@@ -16,7 +16,7 @@ body {
 }
 
 header {
-		min-height: 8vh;
+		min-height: 10vh;
 }
 
 .logo__container {
@@ -33,12 +33,20 @@ header {
 		min-height: 200px;
 }
 
-.cart-icon__container {
-		max-width: 70px;
-		max-height: 70px;
-		min-width: 50px;
-		min-height: 50px;
+.icons__container {
+		max-height: 210px;
 }
+
+.landing-icon {
+		max-width: 30px;
+		max-height: 30px;
+}
+
+.cart-icon__default {
+		max-width: 40px;
+		max-height: 40px;
+}
+
 
 .latest-albums__iframe {
 		width: 350px;
@@ -60,8 +68,8 @@ header {
 		padding-top: 4px !important;
 		margin: 0 !important;
 		position: absolute !important;
-		top: 16px !important;
-		left: 12px !important;
+		top: 8px !important;
+		left: 8px !important;
 }
 
 .header-landing {
@@ -79,4 +87,9 @@ header {
 
 .dot {
 		outline: none !important;
+}
+
+.logo-banner__container {
+		top: 62px;
+		left: 0;
 }
