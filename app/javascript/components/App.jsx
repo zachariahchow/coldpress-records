@@ -38,6 +38,11 @@ const App = () => {
         setIsMenuOpen(!isMenuOpen);
     }
 
+    useEffect(() => {
+        console.log('Menu State');
+        console.log(isMenuOpen);
+    }, [isMenuOpen])
+
     //States
 
     const [httpState, dispatchHttp] = useReducer(httpReducer, {
@@ -283,7 +288,7 @@ const App = () => {
             <BrowserRouter >
                 <ScrollToTop>
                 <Switch>
-                <Route path="/" exact component={LandingPage} />
+                <Route path="/" render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>} />
                 <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>}/>
                 </Switch>
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />

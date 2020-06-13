@@ -9,21 +9,23 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
 
     //CSS Classes
-    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200'];
+    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'bg-gray-200 z-10'];
     const logoContainerClasses = ['w-1/4', 'h-auto'];
     //
 
     return (
         <header className={headerClasses.join(' ')}>
+            <div className="burger__container px-2 z-50">
             <Burger
               onClick={toggleMenuHandler}
               active={isMenuOpen}
               burger="emphatic"
               color="black"
               hoverOpacity={0.8}
-              scale={1.2}
+              scale={0.8}
             />
-            <Nav />
+            </div>
+            <Nav isMenuOpen={isMenuOpen}/>
             <div className="header__content flex justify-center items-center">
                 <p className="header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
             </div>
