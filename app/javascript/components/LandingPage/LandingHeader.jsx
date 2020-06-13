@@ -13,7 +13,7 @@ const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     useOnClickOutside(node, () => setIsMenuOpen(false));
 
     //CSS Classes
-    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-between', 'items-center', 'z-10', 'py-8'];
+    const headerClasses = ['w-full', 'flex', 'justify-between', 'items-center', 'z-10', 'py-8'];
     const logoContainerClasses = ['w-1/4', 'h-auto', 'py-6', 'flex', 'justify-center', 'items-center'];
     //
 

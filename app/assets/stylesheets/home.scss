@@ -27,8 +27,8 @@ header {
 }
 
 .landing-logo__container {
-		max-width: 300px;
-		max-height: 300px;
+		max-width: 280px;
+		max-height: 280px;
 		min-width: 150px;
 		min-height: 150px;
 }
@@ -65,4 +65,12 @@ header {
 
 .header-primary {
 		max-height: 140px;
+}
+
+.carousel__container {
+		max-width: 800px;
+}
+
+.dot {
+		outline: none !important;
 }
