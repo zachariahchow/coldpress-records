@@ -288,8 +288,8 @@ const App = () => {
             <BrowserRouter >
                 <ScrollToTop>
                 <Switch>
-                <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>} />
-                <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>}/>
+                <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />} />
+                <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />}/>
                 </Switch>
                 <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                 <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
