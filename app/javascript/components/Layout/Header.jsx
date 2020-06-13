@@ -15,15 +15,17 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     return (
         <header className={headerClasses.join(' ')}>
+            <div className="burger__container px-2">
             <Burger
               onClick={toggleMenuHandler}
               active={isMenuOpen}
               burger="emphatic"
               color="black"
               hoverOpacity={0.8}
-              scale={1.2}
+              scale={0.8}
             />
-            <Nav />
+            </div>
+            <Nav isMenuOpen={isMenuOpen}/>
             <div className="header__content flex justify-center items-center">
                 <p className="header__text text-center text-2xl tracking-widest uppercase">Cold Press Records</p>
             </div>
