@@ -1,7 +1,10 @@
 module.exports = {
     purge: [],
     theme: {
-        extend: {},
+        fontFamily: {
+            'sans': ['Raleway'],
+            'serif': ['"Roboto Slab"']
+        }
     },
     variants: {},
     plugins: [],
