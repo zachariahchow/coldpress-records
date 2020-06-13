@@ -8,6 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 import '../css/application.css'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
