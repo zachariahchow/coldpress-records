@@ -46,7 +46,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
         return (
                 <div className="checkout-page__container w-full flex flex-col justify-center items-center">
                 <div className="checkout-page-header__container flex justify-center items-center w-full">
-                    <h2 className="checkout-page-header uppercase tracking-widest text-2xl py-2">
+                    <h2 className="checkout-page-header text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
                         Checkout
                     </h2>
                 </div>
