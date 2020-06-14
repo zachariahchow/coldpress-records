@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from './Layout/Header';
 import LandingBanner from './LandingPage/LandingBanner';
