@@ -1,50 +1,58 @@
 import React from 'react';
 import CheckoutTally from './CheckoutTally';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, confirmOrderHandler }) => {
 
-        let productOptionsTallyInfo;
-        let totalAmount;
+    let productOptionsTallyInfo;
+    let totalAmount;
 
-        if (cartData) {
+    if (cartData) {
 
-            const { cartDetails, cartProducts } = cartData
+        const { cartDetails, cartProducts } = cartData
 
-            productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
+        productOptionsTallyInfo = cartDetails.reduce((acc, curDet) => {
 
-                const prodOption = cartProducts
-                    .find(prod => {
-                        return prod.product_option.id == curDet.product_option_id
-                    });
+            const prodOption = cartProducts
+                .find(prod => {
+                    return prod.product_option.id == curDet.product_option_id
+                });
 
-                const prodOptionSubtotal = parseInt(prodOption.product_option.price) * curDet.quantity;
+            const prodOptionSubtotal = parseInt(prodOption.product_option.price) * curDet.quantity;
 
-                acc.push({
-                    product_name: prodOption.product.name,
-                    product_option_id: prodOption.product_option.id,
-                    product_option: prodOption.option.value,
-                    price: prodOption.product_option.price,
-                    quantity: curDet.quantity,
-                    product_subtotal: prodOptionSubtotal,
-                    option_image: prodOption.product_option.thumbnail_img1
-                })
+            acc.push({
+                product_name: prodOption.product.name,
+                product_option_id: prodOption.product_option.id,
+                product_option: prodOption.option.value,
+                price: prodOption.product_option.price,
+                quantity: curDet.quantity,
+                product_subtotal: prodOptionSubtotal,
+                option_image: prodOption.product_option.thumbnail_img1
+            })
 
-                return acc;
-            }, [])
+            return acc;
+        }, [])
 
-            totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
-                return curOpt.product_subtotal + acc
-            }, null)
+        totalAmount = productOptionsTallyInfo.reduce((acc, curOpt) => {
+            return curOpt.product_subtotal + acc
+        }, null)
 
-        }
+    }
 
-        //CSS Classes
+    //CSS Classes
 
-        //
+    //
 
 
-        return (
-                <div className="checkout-page__container w-full flex flex-col justify-center items-center">
+    return (
+        <motion.div
+                    className="checkout-page__container w-full flex flex-col justify-center items-center"
+                    initial={{opacity: 0}}
+                    animate ={{opacity: 1}}
+                    exit={{ opacity: 0}}
+                    key={cartData.cartDetails.length + 3}
+                    transition={{duration: 0.6}}
+                    >
                 <div className="checkout-page-header__container flex justify-center items-center w-full">
                     <h2 className="checkout-page-header text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
                         Checkout
@@ -68,8 +76,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                         There are no items in your Cart.
                     </p>
                 </div>}
-
-            </div>
+        </motion.div>
     );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import CartItem from './CartItem';
 
 const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler }) => {
@@ -24,9 +25,15 @@ const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decre
     })
 
     return (
-        <div key={cartData.cartDetails.length + 3} className="cart__container flex flex-col justify-around items-center w-full md:flex-row md:flex-wrap mb-8">
+        <motion.div
+            initial={{opacity: 0, transform: 'scale(1.01)'}}
+            animate ={{opacity: 1, transform: 'scale(1)'}}
+            exit={{ opacity: 0}}
+            key={cartData.cartDetails.length + 3}
+            transition={{duration: 0.6}}
+            className="cart__container flex flex-col justify-around items-center w-full md:flex-row md:flex-wrap mb-8">
             {cartProductEls}
-        </div>
+        </motion.div>
     );
 }
 

@@ -5,6 +5,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../components/App';
+import { BrowserRouter } from 'react-router-dom'
 
 const mainDiv = document.createElement('div');
 
@@ -16,7 +17,7 @@ mainDivClasses.forEach(cl =>
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
-        <App />,
+        <BrowserRouter><App /></BrowserRouter>,
         document.body.appendChild(mainDiv),
     )
 })

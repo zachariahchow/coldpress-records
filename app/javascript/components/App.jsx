@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from './Layout/Header';
 import LandingBanner from './LandingPage/LandingBanner';
@@ -13,6 +14,10 @@ import AboutPage from './About/AboutPage';
 import ScrollToTop from './Utilities/ScrollToTop';
 
 const App = () => {
+
+    //Location
+
+    const location = useLocation();
 
     //Reducers
 
@@ -286,20 +291,22 @@ const App = () => {
 
     return (
         <main className={mainClasses.join(' ')}>
-            <BrowserRouter >
                 <ScrollToTop>
                 <Switch>
-                <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />} />
-                <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />}/>
+                    <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />} />
+                    <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />}/>
                 </Switch>
-                <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
-                <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
-                <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
-                <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
-                <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
-                <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
+                <AnimatePresence exitBeforeEnter>
+                    <Switch location={location}>
+                        <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
+                        <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
+                        <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
+                        <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
+                        <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
+                        <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
+                    </Switch>
+                </AnimatePresence>
                 </ScrollToTop>
-            </BrowserRouter>
         </main>
     );
 }
