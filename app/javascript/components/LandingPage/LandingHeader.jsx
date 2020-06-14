@@ -34,7 +34,7 @@ const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
               hoverOpacity={0.8}
               scale={0.8}
             />
-            <Nav isMenuOpen={isMenuOpen}/>
+            <Nav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
         </div>
             <div className={"landing-logo__container " + logoContainerClasses.join(' ')}>
                 <Link to="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></Link>

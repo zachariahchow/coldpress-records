@@ -30,7 +30,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
                       hoverOpacity={0.8}
                       scale={0.8}
                     />
-                    <Nav isMenuOpen={isMenuOpen}/>
+                    <Nav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
                 </div>
             </div>
             <div className={"logo__container " + logoContainerClasses.join(' ')}>
