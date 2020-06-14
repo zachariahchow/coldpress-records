@@ -9,6 +9,7 @@
     "@rails/webpacker": "4.2.2",
     "autoprefixer": "^9.8.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "framer-motion": "^1.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-css-burger": "^0.2.0",
