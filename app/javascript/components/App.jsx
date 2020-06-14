@@ -9,6 +9,7 @@ import ArtistBio from './Artists/ArtistBio';
 import Store from './Store/Store';
 import CartPage from './Cart/CartPage';
 import CheckoutPage from './Checkout/CheckoutPage';
+import AboutPage from './About/AboutPage';
 import ScrollToTop from './Utilities/ScrollToTop';
 
 const App = () => {
@@ -296,6 +297,7 @@ const App = () => {
                 <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
                 <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
                 <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
+                <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
                 </ScrollToTop>
             </BrowserRouter>
         </main>
