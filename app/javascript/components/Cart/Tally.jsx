@@ -34,35 +34,48 @@ const Tally = ({ cartData }) => {
     }, null)
 
     const tallyInfoEls = productOptionsTallyInfo.map(prod =>
-        <div className="product-tally-info__container">
-            <div className="product-tally-info-name">
-                {prod.productName}
+        <div className="product-tally-info__container w-2/3 sm:w-1/3 flex flex-col justify-around items-center mx-2 sm:flex-row sm:flex-wrap mt-6">
+            <div className="product-tally-info-image__container w:1/4 mr-4 flex-grow-0 mb-2">
+                <img className="object-contain" src={prod.optionImage} alt=""/>
             </div>
-            <div className="product-tally-info-image__container">
-                <img src={prod.optionImage} alt=""/>
-            </div>
-            <div className="product-tally-info-product-option">
-                {prod.productOption}
-            </div>
-            <div className="product-tally-info-quantity">
-                Quantity: {prod.quantity}
-            </div>
-            <div className="product-tally-info-subtotal">
-                Subtotal: {prod.productSubtotal}
+            <div className="product-tally-info-text__container flex flex-col justify-around items-center text-xs flex-grow-1">
+                <div className="product-tally-info-name">
+                    {prod.productName}
+                </div>
+                <div className="product-tally-info-product-option">
+                    {prod.productOption}
+                </div>
+                <div className="quantity-subtotal__container flex justify-around items-center mt-2">
+                    <div className="product-tally-info-quantity mr-4">
+                        <span className="font-bold">Quantity:</span> {prod.quantity}
+                    </div>
+                    <div className="product-tally-info-subtotal">
+                        <span className="font-bold">Subtotal:</span> ${prod.productSubtotal.toFixed(2)}
+                    </div>
+                </div>
             </div>
         </div>
     )
 
     return (
-        <div className="tally__container w-full flex flex-col justify-center items-center">
-            {tallyInfoEls}
-            <div className="tally-total__container">
-                <h2 className="tally-total__text">
-                    Total: {totalAmount}
+        <div className="tally__container w-11/12 flex flex-col justify-around items-center pt-4 border-t-4 mb-6">
+            <div className="tally__heade w-full flex flex-col justify-center items-center">
+                <p className="tally__header-text text-xl text-center mb-4">Summary</p>
+            </div>
+            <div className="tally-products__container flex flex-col justify-around items-center sm:flex-row sm:flex-wrap">
+                {tallyInfoEls}
+            </div>
+
+            <div className="tally-total__container flex flex-col justify-around items-center my-6 w-1/4 sm:text-xl">
+                <h3 className="tally-gst__text text-gray-700 w-full flex justify-between">
+                    <span className="tracking-wider font-bold ">GST (7%):</span> <span>${(totalAmount * 0.07).toFixed(2)}</span>
+                </h3>
+                <h2 className="tally-total__text text-gray-800 w-full flex justify-between">
+                    <span className="tracking-wider font-bold">Total:</span> <span>${(totalAmount * 1.07).toFixed(2)}</span>
                 </h2>
             </div>
 
-            <div className="tally-checkout__btn-container">
+            <div className="tally-checkout__btn-container mb-6">
             <Link to='checkout'>
                 <button className="tally-checkout__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
                     Checkout

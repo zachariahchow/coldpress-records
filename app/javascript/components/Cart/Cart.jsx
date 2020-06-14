@@ -24,7 +24,7 @@ const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decre
     })
 
     return (
-        <div key={cartData.cartDetails.length + 3} className="cart__container">
+        <div key={cartData.cartDetails.length + 3} className="cart__container flex flex-col justify-around items-center w-full md:flex-row md:flex-wrap mb-8">
             {cartProductEls}
         </div>
     );
