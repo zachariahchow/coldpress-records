@@ -2,12 +2,19 @@ import React from 'react';
 
 const LatestReleases = ({ latestAlbums }) => {
 
+
     //CSS classes
 
     const latestAlbumsEls = latestAlbums.map(album =>
-        <div className="album-container flex flex-col justify-center items-center w-1/2 lg:w-auto mx-4" key={latestAlbums.indexOf(album) + 1}>
+        <div
+            className="album-container flex flex-col justify-center items-center w-1/2 lg:w-auto mx-4 mb-6 transform hover:scale-105 "
+            key={latestAlbums.indexOf(album) + 1}
+        >
             <p className="album-name__text text-center my-2 flex flex-col justify-center items-center"><span className="italic">{album.name}</span> <span className="font-bold">{album.artist_name}</span></p>
-            <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`} seamless><a href={album.bandcamp_url}>{album.name}</a></iframe>
+            <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`}
+                seamless>
+                <a href={album.bandcamp_url}>{album.name}</a>
+            </iframe>
         </div>
     )
 

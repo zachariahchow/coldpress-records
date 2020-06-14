@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
 
 import LandingBanner from './LandingBanner';
 import LatestReleases from './LatestReleases';
@@ -28,6 +29,9 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
         }
     }
 
+    //Spring
+
+    const pageFadeInProps = useSpring({ opacity: 1, from: { opacity: 0 }, config: { duration: 700 } });
 
     //States
 
@@ -62,7 +66,7 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     const bannerImages = [bannerOne, bannerTwo];
 
     return (
-        <div className="content__container w-full flex flex-col justify-around items-center">
+        <animated.div style={pageFadeInProps} className="content__container w-full flex flex-col justify-around items-center">
             <link rel="stylesheet" href="node_modules/react-responsive-carousel/lib/styles/carousel.min.css"/>
             <div className="header-nav__container flex flex-col justify-center items-center w-full z-10">
                 <LandingHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>
@@ -74,7 +78,7 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
                 <Carousel />
             </div>
             <LatestReleases latestAlbums={latestAlbums}/>
-        </div>
+        </animated.div>
     );
 }
 

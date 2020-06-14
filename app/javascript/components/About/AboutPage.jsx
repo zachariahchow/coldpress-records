@@ -1,13 +1,19 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring';
 
 const AboutPage = () => {
+
+    //Spring
+
+    const pageTranslateProps = useSpring({ from: { transform: 'translateY(200%)', opacity: '0' }, to: { transform: 'translateY(0)', opacity: '1' }, config: { duration: 800 } });
+
 
     //CSS Classes
 
     //
 
     return (
-        <div className="about-page__container flex flex-col justify-around items-center mt-6">
+        <animated.div style={pageTranslateProps} className="about-page__container flex flex-col justify-around items-center mt-6">
             <div className="about-page__header flex justify-center items-center w-full">
                 <h2 className="about-page__header-text text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
                     Coldpress Records
@@ -37,7 +43,7 @@ const AboutPage = () => {
                     </p>
                 </div>
             </div>
-        </div>
+        </animated.div>
 
     );
 }

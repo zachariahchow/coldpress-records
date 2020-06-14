@@ -8,11 +8,23 @@ import Nav from '../Layout/Nav';
 import TopNav from '../Layout/TopNav';
 import { Link } from 'react-router-dom';
 import Burger from 'react-css-burger';
+import { useSpring, animated } from 'react-spring';
 
 import { useOnClickOutside } from '../../custom-hooks/use-on-click-outside';
 
 
 const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
+
+    //Spring
+    const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+    const trans = (x, y, s) => `perspective(30rem) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+
+    const [springProps, setSpringProps] = useSpring(() => ({
+        xys: [0, 0, 1],
+        config: { mass: 5, tension: 350, friction: 40 }
+    }));
+
+    //onClickOutside Custom Hook
 
     const node = useRef();
     useOnClickOutside(node, () => setIsMenuOpen(false));
@@ -36,9 +48,14 @@ const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
             />
             <Nav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
         </div>
-            <div className={"landing-logo__container " + logoContainerClasses.join(' ')}>
+            <animated.div
+                style={{transform: springProps.xys.interpolate(trans)}}
+                onMouseMove={({ clientX: x, clientY: y }) => setSpringProps({ xys: calc(x, y) })}
+                onMouseLeave={() => setSpringProps({ xys: [0, 0, 1] })}
+                className={"landing-logo__container " + logoContainerClasses.join(' ')}
+            >
                 <Link to="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></Link>
-            </div>
+            </animated.div>
             <div className="icons__container absolute top-0 right-0 flex flex-col justify-center items-center px-5 pt-4">
                 <Link to="/cart"><img className="landing-icon object-contain mb-2" src={cartIcon} alt="Cart Icon"/></Link>
                 <a target="_blank" href="https://www.facebook.com/coldpressrecs/"><img className="landing-icon object-contain mb-3" src={fbIcon} alt="Facebook Icon"/></a>

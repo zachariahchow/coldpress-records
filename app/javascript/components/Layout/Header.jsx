@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useSpring, animated } from 'react-spring';
 import logo from '../../images/coldpress-logo.png';
 import logoBanner from '../../images/coldpress-banner-logo.png';
 import cartIcon from '../../images/cart-black.png';
@@ -10,6 +11,12 @@ import { useOnClickOutside } from '../../custom-hooks/use-on-click-outside';
 
 const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
+    //Spring
+
+    const headerFadeInProps = useSpring({ opacity: 1, from: { opacity: 0 }, config: { duration: 400 } });
+
+    //onClickOutsideCustom Hook
+
     const node = useRef();
     useOnClickOutside(node, () => setIsMenuOpen(false));
 
@@ -19,7 +26,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     //
 
     return (
-        <header className={`header-primary ${headerClasses.join(' ')}`}>
+        <animated.header style={headerFadeInProps} className={`header-primary ${headerClasses.join(' ')}`}>
             <div className="logo-burger__container flex flex-col justify-center items-center">
                 <div className="burger-nav__ref-container z-20 flex items-center justify-center absolute top-0 left-0" ref={node}>
                     <Burger
@@ -40,7 +47,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
                 <Link to="/cart"><img className="cart-icon__default object-contain pt-2" src={cartIcon} alt="Cart Icon"/></Link>
             </div>
 
-        </header>
+        </animated.header>
     );
 }
 
