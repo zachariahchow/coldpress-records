@@ -26,10 +26,11 @@ const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decre
 
     return (
         <motion.div
-            initial={{y: '200%'}}
-            animate ={{y: '0'}}
-            exit={{ y: '200%'}}
+            initial={{opacity: 0, transform: 'scale(1.01)'}}
+            animate ={{opacity: 1, transform: 'scale(1)'}}
+            exit={{ opacity: 0}}
             key={cartData.cartDetails.length + 3}
+            transition={{duration: 0.6}}
             className="cart__container flex flex-col justify-around items-center w-full md:flex-row md:flex-wrap mb-8">
             {cartProductEls}
         </motion.div>

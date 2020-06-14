@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Tally = ({ cartData }) => {
 
@@ -58,7 +59,13 @@ const Tally = ({ cartData }) => {
     )
 
     return (
-        <div className="tally__container w-11/12 flex flex-col justify-around items-center pt-4 border-t-4 mb-6">
+        <motion.div
+        initial={{opacity: 0}}
+        animate ={{opacity: 1}}
+        exit={{ opacity: 0}}
+        key={cartData.cartDetails.length + 3}
+        transition={{duration: 0.55}}
+        className="tally__container w-11/12 flex flex-col justify-around items-center pt-4 border-t-4 mb-6">
             <div className="tally__heade w-full flex flex-col justify-center items-center">
                 <p className="tally__header-text text-xl text-center mb-4">Summary</p>
             </div>
@@ -82,7 +89,7 @@ const Tally = ({ cartData }) => {
                 </button>
             </Link>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
