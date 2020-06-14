@@ -151,4 +151,7 @@ Rails.application.configure do
 
   ##Config SSL
   config.force_ssl = true
+
+  ##Cloudflare
+  config.middleware.use CloudflareProxy
 end

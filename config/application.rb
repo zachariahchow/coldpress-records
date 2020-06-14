@@ -19,6 +19,5 @@ module ColdpressRecords
 
 
     config.action_mailer.default_url_options = { host: ENV["MAIL_USERNAME"] }
-    config.middleware.use CloudflareProxy
   end
 end
