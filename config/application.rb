@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'cloudflare_proxy'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,5 +19,6 @@ module ColdpressRecords
 
 
     config.action_mailer.default_url_options = { host: ENV["MAIL_USERNAME"] }
+    config.middleware.use CloudflareProxy
   end
 end
