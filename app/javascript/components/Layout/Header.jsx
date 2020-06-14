@@ -14,7 +14,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     useOnClickOutside(node, () => setIsMenuOpen(false));
 
     //CSS Classes
-    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-center', 'items-center', 'z-10', 'border-b-2', 'border-gray-500'];
+    const headerClasses = ['w-full', 'py-4', 'flex', 'justify-center', 'items-center', 'z-10', 'border-b-4', 'border-black', 'border-solid'];
     const logoContainerClasses = ['w-1/4', 'h-auto'];
     //
 
