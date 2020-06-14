@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated } from 'react-spring';
 
 import LandingBanner from './LandingBanner';
 import LatestReleases from './LatestReleases';
@@ -31,7 +31,7 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     //Spring
 
-    const pageFadeInProps = useSpring({ opacity: 1, from: { opacity: 0 }, config: { duration: 700 } })
+    const pageFadeInProps = useSpring({ opacity: 1, from: { opacity: 0 }, config: { duration: 700 } });
 
     //States
 
