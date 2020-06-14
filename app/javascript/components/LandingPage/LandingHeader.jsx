@@ -16,7 +16,7 @@ import { useOnClickOutside } from '../../custom-hooks/use-on-click-outside';
 const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     //Spring
-    const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+    const calc = (x, y) => [-(y - window.innerHeight / 4) / 30, (x - window.innerWidth / 2) / 30, 1.1];
     const trans = (x, y, s) => `perspective(30rem) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
     const [springProps, setSpringProps] = useSpring(() => ({
@@ -35,7 +35,10 @@ const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     //
 
     return (
-        <header className={`header-landing ${headerClasses.join(' ')}`} >
+        <header className={`header-landing ${headerClasses.join(' ')}`}
+            onMouseMove={({ clientX: x, clientY: y }) => setSpringProps({ xys: calc(x, y) })}
+            onMouseLeave={() => setSpringProps({ xys: [0, 0, 1] })}
+        >
         <TopNav />
         <div className="burger-nav__ref-container z-20 flex items-center justify-center pb-4 md:invisible" ref={node}>
             <Burger
@@ -50,8 +53,6 @@ const LandingHeader = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
         </div>
             <animated.div
                 style={{transform: springProps.xys.interpolate(trans)}}
-                onMouseMove={({ clientX: x, clientY: y }) => setSpringProps({ xys: calc(x, y) })}
-                onMouseLeave={() => setSpringProps({ xys: [0, 0, 1] })}
                 className={"landing-logo__container " + logoContainerClasses.join(' ')}
             >
                 <Link to="/"><img className="object-contain" src={logo} alt="Cold Press Logo"/></Link>
