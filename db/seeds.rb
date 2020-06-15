@@ -174,7 +174,7 @@ song24HiveMind.save
 
 ##Patriot
 
-artist4 = Artist.new(name: 'Sun Eater', genre: "Alternative Rock", origin: "Sun Eater formed in 2017 and spent the next few months discovering their identity and evolving into the band they are today.
+artist4 = Artist.new(name: 'Sun Eater', genre: "Alternative Rock", origin: "Singapore", bio: "Sun Eater formed in 2017 and spent the next few months discovering their identity and evolving into the band they are today.
 
 Adding KC Meals (vocals, guitar) to the group, Brandon Hon (guitar), Qimin Ong (bass) and Luke Tang (drums) solidified the lineup and shared a common vision - to create their own diverse sound of groove, technicality, and melody.
 
@@ -194,6 +194,31 @@ album4PatriotSingle = Album.new(artist_id: 4, name: "Patriot (Single)", year_rel
 Mastered by John Naclerio at Nada Recording in Montgomery, New York", cover_img: "https://f4.bcbits.com/img/a3681083127_16.jpg", bandcamp_url: "https://ssuneaterr.bandcamp.com/track/patriot", bandcamp_album_code: "track=460356673")
 
 album4PatriotSingle.save
+
+##Sphaeras (Audiotree Live)
+
+album5SphaerasAudiotree = Album.new(artist_id: 1, name: "Sphaeras Audiotree (Live)", year_released: 2018, description: "Live from Audiotree Chicago", cover_img: "https://f4.bcbits.com/img/a0045291083_16.jpg", bandcamp_url: "http://sphaeras.bandcamp.com/album/sphaeras-audiotree-live", bandcamp_album_code: "album=2628688586")
+
+album5SphaerasAudiotree.save
+
+##Two Seas
+
+artist5 = Artist.new(name: 'Two Seas', genre: "Experimental / Alternative Rock", origin: "Singapore", bio: "Following an indefinite hiatus after their launch of I Will See You in Empty Spaces, the band spent the past several years reinventing their experimental brand of emotive rock. A long-awaited full-length is slated for a late 2020 release, and is a project that pays homage to their new experiences and those who have inspired them.", facebook_url: 'https://www.facebook.com/twoseasband', bandcamp_url: 'https://twoseas.bandcamp.com/', thumbnail_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t31.0-8/12087838_988110254582175_4245221275069940157_o.jpg?_nc_cat=111&_nc_sid=e007fa&_nc_oc=AQn22WzhG8roL2E8G5ipxTAwiFfqB4opgKRtsebITdiwik4ynSsout7QWFUZRJ-yO8c&_nc_ht=scontent.fsin3-1.fna&oh=252506c3b053e9affa3086bc0f3c0ef8&oe=5F0DB6AE', banner_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t31.0-8/12087252_988113021248565_4313553479347552405_o.jpg?_nc_cat=104&_nc_sid=e007fa&_nc_oc=AQmuYYE-AxSc39UucrXa_xAKgSjw0FoMzP8lyWP1wxIB1_uyc3ZORml6VcKxsFjBkT0&_nc_ht=scontent.fsin3-1.fna&oh=3cc5f22f8b9c413b2886ad5678aa0474&oe=5F0D0B6A', instagram_url: 'https://www.instagram.com/twoseasband', youtube_url: 'https://www.youtube.com/user/TWOSEASband', spotify_url: 'https://open.spotify.com/artist/7iJY2J6zmnkFeOVoPZDnHM')
+
+artist5.save
+
+## Two Seas // I Will See You In Empty Spaces
+
+album6TwoSeasIWSYIES = Album.new(artist_id: 5, name: "I Will See You In Empty Spaces", year_released: 2013, description: "Recorded and produced by Shaun Benjamin Stanislus (Special thanks to Wei Wen and Ze Wen)", cover_img: "https://f4.bcbits.com/img/a2430529899_16.jpg", bandcamp_url: "https://twoseas.bandcamp.com/album/i-will-see-you-in-empty-spaces", bandcamp_album_code: "album=840336185")
+
+album6TwoSeasIWSYIES.save
+
+## Two Seas // Self-Titled EP
+
+album6TwoSeasIWSYIES = Album.new(artist_id: 5, name: "Self-Titled EP", year_released: 2013, description: "Recorded and produced by Shaun Benjamin Stanislus
+(Special thanks to Wei Wen and Ze Wen)", cover_img: "https://f4.bcbits.com/img/a0533314650_16.jpg", bandcamp_url: "https://twoseas.bandcamp.com/album/self-titled-ep", bandcamp_album_code: "album=1887541269")
+
+album6TwoSeasIWSYIES.save
 
 #####
 #####
