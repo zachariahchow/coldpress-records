@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useTransition, animated } from 'react-spring'
 
 const ArtistBio = ({ artistData, match }) => {
+
+    //Spring
+
+    const [show, set] = useState(false)
+    const transitions = useTransition(show, null, {
+        from: { transform: 'translateY(200%)' },
+        enter: { transform: 'translateY(0)' },
+        leave: { transform: 'translateY(200%)' },
+    })
 
     const [artistAlbums, setArtistAlbums] = useState([]);
 
@@ -40,8 +50,8 @@ const ArtistBio = ({ artistData, match }) => {
     //
 
 
-    return (
-        <div className="artist__container my-2 flex flex-col justify-around items-center w-full">
+    return transitions.map(({ item, key, props }) => (
+        <animated.div style={props} className="artist__container my-2 flex flex-col justify-around items-center w-full">
             <div className="artist-name__container">
                 <p className="artist-name text-center px-2 py-2 mb-2 tracking-wider uppercase text-xl">{artistData.name}</p>
             </div>
@@ -65,8 +75,8 @@ const ArtistBio = ({ artistData, match }) => {
             )}
 
             </div>
-        </div>
-    );
+        </animated.div>
+    ));
 }
 
 export default ArtistBio;
