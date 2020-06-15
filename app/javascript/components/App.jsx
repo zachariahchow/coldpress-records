@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from './Layout/Header';
+import Footer from './Layout/Footer';
 import LandingBanner from './LandingPage/LandingBanner';
 import LandingPage from './LandingPage/LandingPage';
 import AllArtists from './Artists/AllArtists';
@@ -293,7 +294,7 @@ const App = () => {
 
 
     //CSS classes
-    const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-start', 'items-center'];
+    const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-between', 'items-center'];
 
     return (
         <main className={mainClasses.join(' ')}>
@@ -311,6 +312,7 @@ const App = () => {
                         <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
                         <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
                     </Switch>
+                    <Route path="/" render={(props) => <Footer {...props} />}/>
                 </AnimatePresence>
                 </ScrollToTop>
         </main>
