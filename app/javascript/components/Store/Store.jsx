@@ -19,7 +19,7 @@ const Store = ({ productsData, addToCartHandler, cartData, modalIsShown, setModa
             key={cartData.cartDetails.length + 3}
             transition={{duration: 0.6}}
         >
-            {modalIsShown ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
+            {modalIsShown.open ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
             <AllStoreItems productsData={productsData} addToCartHandler={addToCartHandler} cartData={cartData} />
         </motion.div>
     );

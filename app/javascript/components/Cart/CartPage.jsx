@@ -17,7 +17,7 @@ const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, d
             </h2>
             <Cart cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>
             <Tally key={Math.random * Math.random * 10} cartData={cartData}/>
-            {modalIsShown ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
+            {modalIsShown.open ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
         </div>
     );
 }
