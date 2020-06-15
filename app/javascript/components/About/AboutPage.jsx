@@ -13,19 +13,30 @@ const AboutPage = () => {
     //
 
     return (
-        <animated.div style={pageTranslateProps} className="about-page__container flex flex-col justify-around items-center mt-6">
-            <div className="about-page__header flex justify-center items-center w-full">
-                <h2 className="about-page__header-text text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
-                    Coldpress Records
-                </h2>
+        <animated.div style={pageTranslateProps} className="about-page__container flex flex-col justify-around items-center mt-12">
+            <div className="about-page__header flex flex-col justify-center items-center w-full px-6 lg:hidden">
+                <div className="about-page__header-wrapper">
+                    <h2 className="about-page__header-text-small text-center text-4xl uppercase tracking-widest mb-2 text-black font-bold">
+                        Coldpress
+                    </h2>
+                    <h2 className="about-page__header-text-small text-center text-4xl uppercase tracking-widest mb-2 text-black font-bold">Records</h2>
+                </div>
             </div>
-            <div className="about-page__video-body-container w-11/12 px-4 flex flex-col justify-around items-center lg:items-start lg:flex-row lg:flex-wrap">
+            <div className="about-page__video-body-container w-11/12 px-4 flex flex-col justify-around items-center lg:items-start lg:flex-row lg:flex-wrap lg:justify-center">
                 <div className="about-page__iframe-container w-3/4 lg:w-2/5 my-6">
                     <iframe id="ytplayer" type="text/html" width="640" height="360"
                       src="https://www.youtube.com/embed/uBRYm4LIfkU?autoplay=1"
                       frameborder="0" allow="autoplay; encrypted-media"></iframe>
                 </div>
-                <div className="about-page__body flex flex-col w-11/12 md:w-1/2 md:px-4 py-2 justify-around">
+                <div className="about-page__body flex w-11/12 sm:w-1/2 md:px-8 py-2 justify-around lg:border-r-2">
+                    <div className="about-page__header flex flex-col justify-center items-center w-full px-6 hidden lg:block my-4">
+                        <div className="about-page__header-wrapper flex flex-col justify-center items-center">
+                            <h2 className="about-page__header-text text-center text-4xl uppercase tracking-widest mb-2 text-black font-bold">
+                                Coldpress
+                            </h2>
+                            <h2 className="about-page__header-text transform rotate-180 text-center text-4xl uppercase tracking-widest mb-2 text-black font-bold ">Records \</h2>
+                        </div>
+                    </div>
                     <p className="about-page__paragraph py-4">
                         Coldpress Records is a passion project by the folks at 65 Spectrums, a Singaporean video collective dedicated to the documentation and archiving of local/regional independent music.
 

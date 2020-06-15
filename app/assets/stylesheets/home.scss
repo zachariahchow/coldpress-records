@@ -207,8 +207,9 @@ header {
 @media (min-width: 640px) {
 		.navlink-side a {
 				font-size: 2.8rem;
-				background: linear-gradient(to bottom, #000, #000 60%, darkgrey 60%, darkgrey 100%);
+				background: linear-gradient(to bottom, #000, #000 65%, lightgrey 65%, lightgrey 100%);
 				background-clip: text;
+				-webkit-background-clip: text;
 				color: transparent;
 				background-repeat: no-repeat;
 				transition: background 0.2s ease-out;
@@ -225,4 +226,13 @@ header {
 		}
 }
 
-//
+.album-name__text {
+		width: 350px;
+		background-color: rgba(255, 255, 255, 0.8)
+}
+
+//About page header custom styles
+
+.about-page__header-text {
+		writing-mode: vertical-lr;
+}

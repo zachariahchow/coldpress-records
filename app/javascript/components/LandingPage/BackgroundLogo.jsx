@@ -10,7 +10,7 @@ const BackgroundLogo = () => {
     //
 
     return (
-        <div className="background-logo__container fixed w-full opacity-25">
+        <div className="background-logo__container fixed w-full">
             {logoInstance}
         </div>
     );
