@@ -49,6 +49,7 @@ const App = () => {
         console.log(isMenuOpen);
     }, [isMenuOpen])
 
+    const [modalIsShown, setModalIsShown] = useState(false);
     //States
 
     const [httpState, dispatchHttp] = useReducer(httpReducer, {
@@ -142,6 +143,11 @@ const App = () => {
             })
         }).then(res => {
             getCartData();
+            setModalIsShown(false);
+            setModalIsShown(true);
+            setTimeout(() => {
+                setModalIsShown(false);
+            }, 6000);
             return res.json();
         }).then(resData => {
             console.log(resData);
@@ -300,7 +306,7 @@ const App = () => {
                     <Switch location={location}>
                         <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                         <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
-                        <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler}/>} />
+                        <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler} modalIsShown={modalIsShown}/>} />
                         <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
                         <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
                         <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
