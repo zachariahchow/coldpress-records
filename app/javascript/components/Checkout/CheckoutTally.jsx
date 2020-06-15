@@ -45,22 +45,27 @@ const CheckoutTally = ({ cartData }) => {
                 <div className="product-tally-info-product-option">
                     {prod.productOption}
                 </div>
-                <div className="product-tally-info-quantity">
-                    Quantity: {prod.quantity}
-                </div>
-                <div className="product-tally-info-subtotal">
-                    Subtotal: {prod.productSubtotal}
+                <div className="quantity-subtotal__container flex justify-around items-center mt-2">
+                    <div className="product-tally-info-quantity mr-4">
+                        <span className="font-bold">Quantity:</span> {prod.quantity}
+                    </div>
+                    <div className="product-tally-info-subtotal">
+                        <span className="font-bold">Subtotal:</span> {prod.productSubtotal.toFixed(2)}
+                    </div>
                 </div>
             </div>
         </div>
     )
 
     return (
-        <div className="tally__container w-full flex flex-col justify-center items-center">
+        <div className="tally__container w-full flex flex-col justify-center items-center sm:w-4/5">
             {tallyInfoEls}
-            <div className="tally-total__container">
-                <h2 className="tally-total__text mt-8 mb-4">
-                    Total: {totalAmount}
+            <div className="tally-total__container flex flex-col justify-around items-center my-6 w-3/4 sm:text-xl">
+                <h3 className="tally-gst__text text-gray-700 w-full flex justify-between">
+                    <span className="tracking-wider font-bold ">GST (7%):</span> <span>${(totalAmount * 0.07).toFixed(2)}</span>
+                </h3>
+                <h2 className="tally-total__text text-gray-800 w-full flex justify-between">
+                    <span className="tracking-wider font-bold">Total:</span> <span>${(totalAmount * 1.07).toFixed(2)}</span>
                 </h2>
             </div>
         </div>

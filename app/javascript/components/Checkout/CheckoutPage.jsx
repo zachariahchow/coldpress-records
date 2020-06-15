@@ -58,7 +58,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                         Checkout
                     </h2>
                 </div>
-                <div className="checkout-form-tally__wrapper w-full flex flex-col justify-center items-center sm:flex-row sm:justify-around sm:items-start sm:mt-8 sm:px-6">
+                <div className="checkout-form-tally__wrapper w-full flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:items-start sm:mt-8 sm:px-12">
                     {cartData.cartProducts.length ? <div className="checkout-form__container w-full flex flex-col justify-center items-center sm:w-1/2">
                         <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="email" id="email" placeholder="Email" defaultValue={customerFields.email} onChange={(e) => customerFieldChangeHandler(e, "email")}/>
                         <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="fullName" id="fullName" placeholder="Full Name" defaultValue={customerFields.fullName} onChange={(e) => customerFieldChangeHandler(e, "fullName")}/>
