@@ -19,7 +19,14 @@ const AllStoreItems = ({ productsData, addToCartHandler, cartData }) => {
             .find(artist =>
                 prod.artist_id == artist.id)
 
-        return (<StoreItem productData={prod} productOptions={productOptions} artist={artist} addToCartHandler={addToCartHandler} cartData={cartData} key={productsData.products.indexOf(prod) + 1}/>)
+        return (<StoreItem
+            productData={prod}
+            productOptions={productOptions}
+            artist={artist}
+            addToCartHandler={addToCartHandler}
+            cartData={cartData}
+            key={productsData.products.indexOf(prod) + 1}
+            />)
     })
 
     return (

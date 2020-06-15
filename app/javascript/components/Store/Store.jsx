@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AllStoreItems from './AllStoreItems';
+import AddedToCartModal from './AddedToCartModal';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const Store = ({ productsData, addToCartHandler, cartData }) => {
+const Store = ({ productsData, addToCartHandler, cartData, modalIsShown }) => {
+
 
     //CSS Classes
 
@@ -17,7 +19,8 @@ const Store = ({ productsData, addToCartHandler, cartData }) => {
             key={cartData.cartDetails.length + 3}
             transition={{duration: 0.6}}
         >
-            <AllStoreItems productsData={productsData} addToCartHandler={addToCartHandler} cartData={cartData}/>
+            {modalIsShown ? <AddedToCartModal modalIsShown={modalIsShown}/> : null}
+            <AllStoreItems productsData={productsData} addToCartHandler={addToCartHandler} cartData={cartData} />
         </motion.div>
     );
 }
