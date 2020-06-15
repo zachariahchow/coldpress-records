@@ -50,7 +50,7 @@ const App = () => {
         console.log(isMenuOpen);
     }, [isMenuOpen])
 
-    const [modalIsShown, setModalIsShown] = useState(false);
+    const [modalIsShown, setModalIsShown] = useState({ text: null, open: false });
     //States
 
     const [httpState, dispatchHttp] = useReducer(httpReducer, {
@@ -144,10 +144,10 @@ const App = () => {
             })
         }).then(res => {
             getCartData();
-            setModalIsShown(false);
-            setModalIsShown(true);
+            setModalIsShown({ text: null, open: false });
+            setModalIsShown({ text: "Item added to cart!", open: true });
             setTimeout(() => {
-                setModalIsShown(false);
+                setModalIsShown({ text: null, open: false });
             }, 6000);
             return res.json();
         }).then(resData => {
@@ -172,6 +172,11 @@ const App = () => {
             headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
         }).then(res => {
             getCartData();
+            setModalIsShown({ text: null, open: false });
+            setModalIsShown({ text: "Item removed from cart!", open: true });
+            setTimeout(() => {
+                setModalIsShown({ text: null, open: false });
+            }, 6000);
             return res
         }).then(resData => {
             console.log(resData);
@@ -308,7 +313,7 @@ const App = () => {
                         <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
                         <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
                         <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler} modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/>} />
-                        <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>} />
+                        <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler} modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/>} />
                         <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
                         <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
                     </Switch>

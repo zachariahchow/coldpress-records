@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import CartItem from './CartItem';
 
-const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler }) => {
+const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler, modalIsShown }) => {
 
     //CSS Classes
 
@@ -20,7 +20,7 @@ const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decre
 
     const cartProductEls = cartData.cartProducts.map(prod => {
         return (
-            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler} quantity={cartData.cartDetails.find(el => el.product_option_id == prod.product_option.id).quantity} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>
+            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler} quantity={cartData.cartDetails.find(el => el.product_option_id == prod.product_option.id).quantity} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler} modalIsShown={modalIsShown}/>
         )
     })
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const AddedToCartModal = () => {
+const AddedOrRemovedCartModal = ({ modalIsShown }) => {
 
     //
 
@@ -14,10 +14,10 @@ const AddedToCartModal = () => {
                 exit={{ y: '-200%'}}
                 transition={{duration: 1}}
             >
-                <h2  className={`added-to-cart-modal__header text-center text-xl uppercase font-black tracking-widest`}>Item added to cart!</h2>
+                <h2  className={`added-to-cart-modal__header text-center text-xl uppercase font-black tracking-widest`}>{modalIsShown.text}</h2>
             </motion.div>
         </AnimatePresence>
     );
 }
 
-export default AddedToCartModal;
+export default AddedOrRemovedCartModal;

@@ -1,8 +1,9 @@
 import React from 'react';
 import Cart from './Cart';
 import Tally from './Tally';
+import AddedOrRemovedCartModal from '../Store/AddedOrRemovedCartModal';
 
-const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler }) => {
+const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler, modalIsShown, setModalIsShown }) => {
 
     //CSS Classes
 
@@ -16,6 +17,7 @@ const CartPage = ({ cartData, removeFromCartHandler, incrementQuantityHandler, d
             </h2>
             <Cart cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler}/>
             <Tally key={Math.random * Math.random * 10} cartData={cartData}/>
+            {modalIsShown ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
         </div>
     );
 }
