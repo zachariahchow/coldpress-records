@@ -215,10 +215,30 @@ album6TwoSeasIWSYIES.save
 
 ## Two Seas // Self-Titled EP
 
-album6TwoSeasIWSYIES = Album.new(artist_id: 5, name: "Self-Titled EP", year_released: 2013, description: "Recorded and produced by Shaun Benjamin Stanislus
+album7TwoSeasSelfTitled = Album.new(artist_id: 5, name: "Self-Titled EP", year_released: 2013, description: "Recorded and produced by Shaun Benjamin Stanislus
 (Special thanks to Wei Wen and Ze Wen)", cover_img: "https://f4.bcbits.com/img/a0533314650_16.jpg", bandcamp_url: "https://twoseas.bandcamp.com/album/self-titled-ep", bandcamp_album_code: "album=1887541269")
 
-album6TwoSeasIWSYIES.save
+album7TwoSeasSelfTitled.save
+
+## Hauste
+
+artist6 = Artist.new(name: 'Hauste', genre: "Instrumental / Progressive / Math Rock", origin: "Singapore", bio: "Formed in 2015, hauste is a trio that introduces a refreshing explorative style of instrumental rock: complex melodies, ambient soundscapes and a carefree twang of familiar emotions. Though their music is frequently labelled as progressive and math rock, the band breaks definitional boundaries by experimenting with a symphony of emotive sounds, foregrounded by layers of technical instrumentations and musical narratives.
+In April 2018, hauste released their debut album, Leavings, which testified to the band’s experimentation with the exciting genres of math rock and post-progressive.
+Since their inception, hauste performed extensively in Singapore, most notably opening for instrumental rock giants such as Chon (USA), Delta Sleep (UK) and Elephant Gym (TW).
+As part of Southeast Asia’s growing instrumental music scene, the band has supported tide/edit (PH) debut show in Malaysia and Singapore, as well as toured Mid-West Java alongside label mates, Murphy Radio (ID).
+The trio’s upcoming album, Patterns, is scheduled to release in mid-2020. While maintaining hauste’s roots in instrumental rock, the sophomore efforts also keeps in line with the band’s signature adventurousness, incorporating an unexpected and eclectic mix of genres such as R&B, Jazz Fusion, Indie Pop and Synthwave.", facebook_url: 'https://www.facebook.com/haustesound/', bandcamp_url: 'https://haustesound.bandcamp.com/', thumbnail_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t31.0-8/12604672_1807523966141836_116457242836518383_o.jpg?_nc_cat=106&_nc_sid=2d5d41&_nc_oc=AQmCm1h_rPdEjlfXVexw6TkjpNP32ST3L3HOA052UAWBe4cvgds_J5VqdBYhRI3sHiU&_nc_ht=scontent.fsin3-1.fna&oh=a991dcd0226ad244ef6fb8f1ed1a9470&oe=5F0CE3EF', banner_img: 'https://scontent.fsin3-1.fna.fbcdn.net/v/t1.0-9/68549254_2576395792587979_4276153543947190272_n.jpg?_nc_cat=108&_nc_sid=9e2e56&_nc_oc=AQmpZuqE0YyOM6tFOLL4bZAUOQtwqItznQU66p2TSUSeEH6xxCwJO8odD0V1nSyYXuA&_nc_ht=scontent.fsin3-1.fna&oh=d806c693ad215c12f64a6d6c15bd6738&oe=5F0BEDF9', instagram_url: 'https://www.instagram.com/haustesound', youtube_url: 'https://www.youtube.com/watch?v=7lkxnwkPPnY', spotify_url: 'https://open.spotify.com/artist/21LkFQeo8TIuUHtdyzgHrH?si=iHSrFwNRShC8AAn9cF0uKQ')
+
+artist6.save
+
+## Hauste // Nara
+
+album8HausteNaraSingle = Album.new(artist_id: 6, name: "Nara (Single)", year_released: 2020, description: "Synthesizer and Piano by Koh Yida
+Artwork by Ian Tan
+
+Produced by Panda Machine and hauste
+Mixed by Eugene Soh (Saturn Sounds Studio)", cover_img: "https://f4.bcbits.com/img/a3845003881_16.jpg", bandcamp_url: "https://haustesound.bandcamp.com/track/nara", bandcamp_album_code: "track=3791653519")
+
+album8HausteNaraSingle.save
 
 #####
 #####
