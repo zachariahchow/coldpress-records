@@ -61,7 +61,7 @@ const ArtistBio = ({ artistData, match }) => {
                     <img className="artist-thumbnail object-cover" src={artistData.thumbnail_img} alt={artistData.name}/>
                 </div>
                 <div className="artist-bio__container flex flex-col justify-center items-center p-2 w-10/12">
-                    <p className="artist-bio__text font-serif text-center w-11/12 my-2">{artistData.bio}</p>
+                    <p className="artist-bio__text font-serif w-full my-2">{artistData.bio}</p>
                 </div>
             </div>
                 <div className="artist-releases__container flex flex-col justify-around items-center w-full lg:w-1/2 lg:min-h-screen lg:justify-start lg:border-l-2">
