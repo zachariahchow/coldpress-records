@@ -202,4 +202,27 @@ header {
 		clip-path: inset(-1% -1% 50% -1%);
 }
 
+//Nav custom styles
+
+@media (min-width: 640px) {
+		.navlink-side a {
+				font-size: 2.8rem;
+				background: linear-gradient(to bottom, #000, #000 60%, darkgrey 60%, darkgrey 100%);
+				background-clip: text;
+				color: transparent;
+				background-repeat: no-repeat;
+				transition: background 0.2s ease-out;
+				white-space: nowrap;
+
+		}
+
+		.navlink-side a:hover {
+				background-position: 0 9.5px;
+		}
+
+		.navlink-side:hover::before {
+				transform: translateY(10px);
+		}
+}
+
 //
