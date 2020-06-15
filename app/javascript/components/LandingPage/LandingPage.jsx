@@ -67,7 +67,7 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     const bannerImages = [bannerOne, bannerTwo];
 
     return (
-        <animated.div style={pageFadeInProps} className="content__container w-full flex flex-col justify-around items-center">
+        <animated.div style={pageFadeInProps} className="content__container w-full flex flex-col justify-around items-center mb-42">
             <link rel="stylesheet" href="node_modules/react-responsive-carousel/lib/styles/carousel.min.css"/>
             <BackgroundLogo />
             <div className="header-nav__container flex flex-col justify-center items-center w-full z-10">
