@@ -3,7 +3,7 @@ import AllStoreItems from './AllStoreItems';
 import AddedToCartModal from './AddedToCartModal';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const Store = ({ productsData, addToCartHandler, cartData, modalIsShown }) => {
+const Store = ({ productsData, addToCartHandler, cartData, modalIsShown, setModalIsShown }) => {
 
 
     //CSS Classes
@@ -19,7 +19,7 @@ const Store = ({ productsData, addToCartHandler, cartData, modalIsShown }) => {
             key={cartData.cartDetails.length + 3}
             transition={{duration: 0.6}}
         >
-            {modalIsShown ? <AddedToCartModal modalIsShown={modalIsShown}/> : null}
+            {modalIsShown ? <AddedToCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
             <AllStoreItems productsData={productsData} addToCartHandler={addToCartHandler} cartData={cartData} />
         </motion.div>
     );

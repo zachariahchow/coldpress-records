@@ -9,7 +9,7 @@ import Burger from 'react-css-burger';
 
 import { useOnClickOutside } from '../../custom-hooks/use-on-click-outside';
 
-const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
+const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler, setModalIsShown }) => {
 
     //Spring
 
@@ -19,6 +19,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
 
     const node = useRef();
     useOnClickOutside(node, () => setIsMenuOpen(false));
+    useOnClickOutside(node, () => setModalIsShown(false));
 
     //CSS Classes
     const headerClasses = ['w-full', 'py-4', 'flex', 'justify-center', 'items-center', 'z-10', 'border-b-4', 'border-black', 'border-solid'];

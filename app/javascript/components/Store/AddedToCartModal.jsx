@@ -1,7 +1,9 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const AddedToCartModal = ({ modalIsShown }) => {
+const AddedToCartModal = () => {
+
+    //
 
     return (
         <AnimatePresence exitBeforeEnter>
