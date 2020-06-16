@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated } from 'react-spring';
+import { uid } from 'react-uid';
 
 import fbIcon from '../../images/fb-black-icon.png';
 import igIcon from '../../images/ig-black-icon.png';
@@ -57,7 +58,7 @@ const ArtistBio = ({ artistData, match }) => {
 
 
     return transitions.map(({ item, key, props }) => (
-        <animated.div style={props} className="artist__container my-4 flex flex-col justify-around items-center w-full lg:flex-row lg:items-start">
+        <animated.div key={uid(key)} style={props} className="artist__container my-4 flex flex-col justify-around items-center w-full lg:flex-row lg:items-start">
             <div className="artist-info__container flex flex-col justify-around items-center w-full lg:w-1/2 lg:min-h-screen lg:justify-start">
                 <div className="artist-name__container flex flex-col justify-center items-center">
                     <p className="artist-name text-center px-2 py-2 mb-2 tracking-wider uppercase text-4xl">{artistData.name}</p>
@@ -91,7 +92,7 @@ const ArtistBio = ({ artistData, match }) => {
                     {artistAlbums.map(album =>
                         <div
                             className="album-container flex flex-col justify-center items-center w-5/12 lg:w-auto mx-4 mb-6 transform hover:scale-105 "
-                            key={artistAlbums.indexOf(album) + 999}
+                            key={uid(album)}
                         >
                             <p className="album-name__text text-center py-4 flex flex-col justify-center items-center"><span className="uppercase text-xl tracking-wider font-semibold">{album.name}</span> <span className="font-bold border-b-2 border-white">{album.artist_name}</span></p>
                             <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`}

@@ -1,6 +1,7 @@
 import React from 'react';
 import StoreItem from './StoreItem';
 import { AnimatePresence, motion } from 'framer-motion';
+import { uid, useUID } from 'react-uid';
 
 const AllStoreItems = ({ productsData, addToCartHandler, cartData }) => {
 
@@ -20,20 +21,17 @@ const AllStoreItems = ({ productsData, addToCartHandler, cartData }) => {
                 prod.artist_id == artist.id)
 
         return (<StoreItem
-            productData={prod}
-            productOptions={productOptions}
-            artist={artist}
-            addToCartHandler={addToCartHandler}
-            cartData={cartData}
-            key={productsData.products.indexOf(prod) + 1}
+                productData={prod}
+                productOptions={productOptions}
+                artist={artist}
+                addToCartHandler={addToCartHandler}
+                cartData={cartData}
+                key={uid(prod)}
             />)
     })
 
     return (
-        <div
-            key={cartData.cartDetails.length + 5}
-            className="all-store-items__container flex flex-col justify-around items-center mt-6"
-        >
+        <div className="all-store-items__container flex flex-col justify-around items-center mt-6">
             <div className="all-store-items__header flex justify-center items-center w-full">
                 <h2 className="all-store-items__header-text text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
                     All Items

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { uid, useUID } from 'react-uid';
 
 const CartItem = ({ cartData, item, removeFromCartHandler, quantity, incrementQuantityHandler, decrementQuantityHandler }) => {
 
@@ -7,7 +8,7 @@ const CartItem = ({ cartData, item, removeFromCartHandler, quantity, incrementQu
     //
 
     return (
-        <div key={cartData.cartDetails.length + 7} className="cart-product__container flex flex-col justify-around items-center w-full md:w-1/2 px-4">
+        <div className="cart-product__container flex flex-col justify-around items-center w-full md:w-1/2 px-4">
             <div className="cart-product-name__container w-full flex justify-center items-center">
                 <p className="cart-product-name__text text-center text-xl tracking-wider p-2">{item.product.name}</p>
             </div>

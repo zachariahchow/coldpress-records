@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { uid, useUID } from 'react-uid';
 
 const CheckoutTally = ({ cartData }) => {
 
@@ -34,7 +35,7 @@ const CheckoutTally = ({ cartData }) => {
     }, null)
 
     const tallyInfoEls = productOptionsTallyInfo.map(prod =>
-        <div className="product-tally-info__container w-2/3 sm:w-11/12 flex flex-col justify-around items-center mx-2 sm:flex-row sm:flex-wrap mt-6">
+        <div key={uid(prod)} className="product-tally-info__container w-2/3 sm:w-11/12 flex flex-col justify-around items-center mx-2 sm:flex-row sm:flex-wrap mt-6">
             <div className="product-tally-info-image__container w-1/4 sm:w-3/4 mr-4 flex-grow-0 mb-2">
                 <img src={prod.optionImage} alt=""/>
             </div>
