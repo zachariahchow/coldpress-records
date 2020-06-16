@@ -254,3 +254,103 @@ header {
 		max-width: 600px;
 		text-indent: 2rem;
 }
+
+//Page load animations / transitions
+
+.page-load-logo__container {
+		max-height: 60%;
+}
+
+.page-load-logo__container img {
+		animation: shake 0.82s infinite cubic-bezier(.36, .07, .19, .97) both;
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		perspective: 1000px;
+}
+
+.page-load-logo {
+		max-height: 60vh;
+}
+
+.page-load-disclaimer__container {
+		height: auto;
+}
+
+.toggle-page__btn-container {
+		height: auto
+}
+
+@keyframes shake {
+
+		10%,
+		90% {
+				transform: translate3d(-1px, 0, 0);
+		}
+
+		20%,
+		80% {
+				transform: translate3d(2px, 0, 0);
+		}
+
+		30%,
+		50%,
+		70% {
+				transform: translate3d(-4px, 0, 0);
+		}
+
+		40%,
+		60% {
+				transform: translate3d(4px, 0, 0);
+		}
+}
+
+$speed: 0.5s;
+
+.toggle-page__btn {
+
+		outline: none !important;
+
+		&:hover {
+
+				&:after {
+						opacity: 1;
+						transform: translateY(0) rotateX(0);
+				}
+
+				&:before {
+						opacity: 0;
+						transform: translateY(50%) rotateX(90deg);
+				}
+		}
+
+		&::after {
+				top: 0;
+				left: 0;
+				opacity: 0;
+				width: 100%;
+				color: #323237;
+				display: block;
+				transition: $speed;
+				line-height: 2.4rem;
+				position: absolute;
+				background: white;
+				content: attr(data-back);
+				transform: translateY(-50%) rotateX(90deg);
+		}
+
+		&::before {
+				top: 0;
+				left: 0;
+				opacity: 1;
+				color: #adadaf;
+				display: block;
+				padding: 0 30px;
+				line-height: 2.4rem;
+				transition: $speed;
+				position: relative;
+				background: black;
+				border-color: white;
+				content: attr(data-front);
+				transform: translateY(0) rotateX(0);
+		}
+}
