@@ -12,6 +12,7 @@ import Store from './Store/Store';
 import CartPage from './Cart/CartPage';
 import CheckoutPage from './Checkout/CheckoutPage';
 import AboutPage from './About/AboutPage';
+import PageLoad from './LandingPage/PageLoad';
 import ScrollToTop from './Utilities/ScrollToTop';
 
 const App = () => {
@@ -51,6 +52,19 @@ const App = () => {
     }, [isMenuOpen])
 
     const [modalIsShown, setModalIsShown] = useState({ text: null, open: false });
+
+    const [togglePageLoad, setTogglePageLoad] = useState(true);
+
+    const togglePageHandler = () => {
+        setTogglePageLoad(!togglePageLoad);
+        window.scrollTo(0, 0);
+    }
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setTogglePageLoad(false);
+    //     }, 5000)
+    // }, [])
     //States
 
     const [httpState, dispatchHttp] = useReducer(httpReducer, {
@@ -297,7 +311,6 @@ const App = () => {
         })
     }
 
-
     //CSS classes
     const mainClasses = ['min-h-screen', 'w-full', 'flex', 'flex-col', 'justify-between', 'items-center'];
 
@@ -305,7 +318,7 @@ const App = () => {
         <main className={mainClasses.join(' ')}>
                 <ScrollToTop>
                 <Switch>
-                    <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} />} />
+                    <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} togglePageLoad={togglePageLoad} setTogglePageLoad={setTogglePageLoad} togglePageHandler={togglePageHandler}/>} />
                     <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} setModalIsShown={setModalIsShown}/>}/>
                 </Switch>
                 <AnimatePresence exitBeforeEnter>

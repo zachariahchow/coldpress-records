@@ -5,13 +5,14 @@ import { useSpring, animated } from 'react-spring';
 import LandingBanner from './LandingBanner';
 import LatestReleases from './LatestReleases';
 import LandingHeader from './LandingHeader';
+import PageLoad from './PageLoad';
 import Carousel from './Carousel';
 import BackgroundLogo from './BackgroundLogo';
 
 import bannerOne from '../../images/sphaeras-banner-1.jpg';
 import bannerTwo from '../../images/suneater-banner.jpg';
 
-const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
+const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler, togglePageLoad, setTogglePageLoad, togglePageHandler }) => {
 
     //Reducers
 
@@ -62,6 +63,9 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
         console.log(latestAlbums);
     }, [latestAlbums]);
 
+    //UI States
+
+
     //CSS classes
 
     const bannerImages = [bannerOne, bannerTwo];
@@ -69,6 +73,7 @@ const LandingPage = ({ isMenuOpen, setIsMenuOpen, toggleMenuHandler }) => {
     return (
         <animated.div style={pageFadeInProps} className="content__container w-full flex flex-col justify-around items-center mb-42">
             <link rel="stylesheet" href="node_modules/react-responsive-carousel/lib/styles/carousel.min.css"/>
+            <PageLoad togglePageLoad={togglePageLoad} setTogglePageLoad={setTogglePageLoad} togglePageHandler={togglePageHandler}/>
             <BackgroundLogo />
             <div className="header-nav__container flex flex-col justify-center items-center w-full z-10">
                 <LandingHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler}/>
