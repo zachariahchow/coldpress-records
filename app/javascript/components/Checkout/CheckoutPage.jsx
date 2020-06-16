@@ -1,8 +1,9 @@
 import React from 'react';
 import CheckoutTally from './CheckoutTally';
+import AddedOrRemovedCartModal from '../Store/AddedOrRemovedCartModal';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, confirmOrderHandler }) => {
+const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, confirmOrderHandler, modalIsShown, setModalIsShown }) => {
 
     let productOptionsTallyInfo;
     let totalAmount;
@@ -53,6 +54,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                     key={cartData.cartDetails.length + 3}
                     transition={{duration: 0.6}}
                     >
+                {modalIsShown.open ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
                 <div className="checkout-page-header__container flex justify-center items-center w-full">
                     <h2 className="checkout-page-header text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
                         Checkout
@@ -60,12 +62,60 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                 </div>
                 <div className="checkout-form-tally__wrapper w-full flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:items-start sm:mt-8 sm:px-12">
                     {cartData.cartProducts.length ? <div className="checkout-form__container w-full flex flex-col justify-center items-center sm:w-1/2">
-                        <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="email" id="email" placeholder="Email" defaultValue={customerFields.email} onChange={(e) => customerFieldChangeHandler(e, "email")}/>
-                        <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="fullName" id="fullName" placeholder="Full Name" defaultValue={customerFields.fullName} onChange={(e) => customerFieldChangeHandler(e, "fullName")}/>
-                        <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="billingAddress" id="billingAddress" placeholder="Billing Address" defaultValue={customerFields.billingAddress} onChange={(e) => customerFieldChangeHandler(e, "billingAddress")}/>
-                        <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="shippingAddress" id="shippingAddress" placeholder="Shipping Address" defaultValue={customerFields.shippingAddress} onChange={(e) => customerFieldChangeHandler(e, "shippingAddress")}/>
-                        <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="country" id="country" placeholder="Country" defaultValue={customerFields.country} onChange={(e) => customerFieldChangeHandler(e, "country")}/>
-                        <input className={`checkout__input ${inputClasses.join(' ')}`} type="text" name="phone" id="phone" placeholder="Phone Number" defaultValue={customerFields.phone} onChange={(e) => customerFieldChangeHandler(e, "phone")}/>
+                        <input
+                            className={`checkout__input ${inputClasses.join(' ')}`}
+                            type="text"
+                            name="email"
+                            id="email"
+                            placeholder="Email"
+                            defaultValue={customerFields.email}
+                            onChange={(e) => customerFieldChangeHandler(e, "email")}
+                        />
+                        <input
+                            className={`checkout__input ${inputClasses.join(' ')}`}
+                            type="text"
+                            name="fullName"
+                            id="fullName"
+                            placeholder="Full Name"
+                            defaultValue={customerFields.fullName}
+                            onChange={(e) => customerFieldChangeHandler(e, "fullName")}
+                        />
+                        <input
+                            className={`checkout__input ${inputClasses.join(' ')}`}
+                            type="text"
+                            name="billingAddress"
+                            id="billingAddress"
+                            placeholder="Billing Address"
+                            defaultValue={customerFields.billingAddress}
+                            onChange={(e) => customerFieldChangeHandler(e, "billingAddress")}
+                        />
+                        <input
+                            className={`checkout__input ${inputClasses.join(' ')}`}
+                            type="text"
+                            name="shippingAddress"
+                            id="shippingAddress"
+                            placeholder="Shipping Address"
+                            defaultValue={customerFields.shippingAddress}
+                            onChange={(e) => customerFieldChangeHandler(e, "shippingAddress")}
+                        />
+                        <input
+                            className={`checkout__input ${inputClasses.join(' ')}`}
+                            type="text"
+                            name="country"
+                            id="country"
+                            placeholder="Country"
+                            defaultValue={customerFields.country}
+                            onChange={(e) => customerFieldChangeHandler(e, "country")}
+                        />
+                        <input
+                            className={`checkout__input ${inputClasses.join(' ')}`}
+                            type="text"
+                            name="phone"
+                            id="phone"
+                            placeholder="Phone Number"
+                            defaultValue={customerFields.phone}
+                            onChange={(e) => customerFieldChangeHandler(e, "phone")}
+                        />
                         {cartData.cartProducts.length ? <div className="checkout-form-confirm__btn-container">
                             <button onClick={(e) => confirmOrderHandler(e, productOptionsTallyInfo, totalAmount)}className="checkout-form-confirm__btn btn-primary btn-primary bg-transparent hover:bg-gray-500 text-gray-500 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded">
                                 Confirm Order

@@ -51,7 +51,10 @@ const App = () => {
         console.log(isMenuOpen);
     }, [isMenuOpen])
 
-    const [modalIsShown, setModalIsShown] = useState({ text: null, open: false });
+    const [modalIsShown, setModalIsShown] = useState({
+        text: null,
+        open: false
+    });
 
     const [togglePageLoad, setTogglePageLoad] = useState(true);
 
@@ -151,17 +154,29 @@ const App = () => {
 
         fetch('/add-to-cart', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            },
             body: JSON.stringify({
                 cart_id: cartData.cart.id,
                 product_option_id: parseInt(ev.target.dataset.productOptionId)
             })
         }).then(res => {
             getCartData();
-            setModalIsShown({ text: null, open: false });
-            setModalIsShown({ text: "Item added to cart!", open: true });
+            setModalIsShown({
+                text: null,
+                open: false
+            });
+            setModalIsShown({
+                text: "Item added to cart!",
+                open: true
+            });
             setTimeout(() => {
-                setModalIsShown({ text: null, open: false });
+                setModalIsShown({
+                    text: null,
+                    open: false
+                });
             }, 6000);
             return res.json();
         }).then(resData => {
@@ -183,7 +198,10 @@ const App = () => {
 
         fetch(`/remove-from-cart/${cartId}/${productOptionId}`, {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            }
         }).then(res => {
             getCartData();
             setModalIsShown({ text: null, open: false });
@@ -222,7 +240,10 @@ const App = () => {
 
         fetch(`/edit-quantity/${cartId}/${productOptionId}/${productOptionQty}`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken
+            }
         }).then(res => {
             getCartData();
             return res.json();
@@ -255,7 +276,10 @@ const App = () => {
 
                     fetch(`/edit-quantity/${cartId}/${productOptionId}/${productOptionQty}`, {
                         method: 'PATCH',
-                        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken }
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-Token': csrfToken
+                        }
                     }).then(res => {
                         getCartData();
                         return res.json();
@@ -302,6 +326,16 @@ const App = () => {
             headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
             body: JSON.stringify({ customer: customerFields, order: orderData, total_price: totalPrice })
         }).then(res => {
+            setModalIsShown({
+                text: 'Thank you for your purchase!',
+                open: true
+            });
+            setTimeout(() => {
+                setModalIsShown({
+                    text: null,
+                    open: false
+                });
+            }, 6000);
             getCartData([]);
             return res.json();
         }).then(resData => {
@@ -317,21 +351,99 @@ const App = () => {
     return (
         <main className={mainClasses.join(' ')}>
                 <ScrollToTop>
-                <Switch>
-                    <Route path="/" exact render={(props) => <LandingPage {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} togglePageLoad={togglePageLoad} setTogglePageLoad={setTogglePageLoad} togglePageHandler={togglePageHandler}/>} />
-                    <Route path="/" render={(props) => <Header {...props} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} toggleMenuHandler={toggleMenuHandler} setModalIsShown={setModalIsShown}/>}/>
-                </Switch>
-                <AnimatePresence exitBeforeEnter>
-                    <Switch location={location}>
-                        <Route path="/artists" exact render={(props) => <AllArtists {...props} allArtistsData={allArtists}/>} />
-                        <Route path="/artists/:id" exact render={(props) => <ArtistBio {...props} artistData={allArtists.find(artist => artist.id == props.match.params.id)}/>} />
-                        <Route path="/store" exact render={(props) => <Store {...props} productsData={allProducts} cartData={cartData} addToCartHandler={addToCartHandler} modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/>} />
-                        <Route path="/cart" exact render={(props) => <CartPage {...props} cartData={cartData} removeFromCartHandler={removeFromCartHandler} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler} modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/>} />
-                        <Route path="/checkout" exact render={(props) => <CheckoutPage {...props} customerFieldChangeHandler={customerFieldChangeHandler} customerFields={customerFields} cartData={cartData} confirmOrderHandler={confirmOrderHandler}/>} />
-                        <Route path="/about" exact render={(props) => <AboutPage {...props}/>} />
+                    <Switch>
+                        <Route
+                            path="/"
+                            exact render={(props) =>
+                                <LandingPage
+                                    {...props}
+                                    isMenuOpen={isMenuOpen}
+                                    setIsMenuOpen={setIsMenuOpen}
+                                    toggleMenuHandler={toggleMenuHandler}
+                                    togglePageLoad={togglePageLoad}
+                                    setTogglePageLoad={setTogglePageLoad}
+                                    togglePageHandler={togglePageHandler}
+                                />}
+                        />
+                        <Route
+                            path="/"
+                            render={(props) =>
+                                <Header
+                                {...props}
+                                    isMenuOpen={isMenuOpen}
+                                    setIsMenuOpen={setIsMenuOpen}
+                                    toggleMenuHandler={toggleMenuHandler}
+                                    setModalIsShown={setModalIsShown}
+                                />}
+                        />
                     </Switch>
-                    <Route path="/" render={(props) => <Footer {...props} />}/>
-                </AnimatePresence>
+
+                    <AnimatePresence exitBeforeEnter>
+                        <Switch location={location}>
+                            <Route
+                                path="/artists"
+                                exact render={(props) =>
+                                    <AllArtists
+                                        {...props}
+                                        allArtistsData={allArtists}
+                                    />}
+                            />
+                            <Route
+                                path="/artists/:id"
+                                exact render={(props) =>
+                                    <ArtistBio
+                                        {...props}
+                                        artistData={allArtists
+                                            .find(artist => artist.id == props.match.params.id)}
+                                    />}
+                            />
+                            <Route
+                                path="/store"
+                                exact render={(props) =>
+                                    <Store
+                                        {...props}
+                                        productsData={allProducts}
+                                        cartData={cartData}
+                                        addToCartHandler={addToCartHandler}
+                                        modalIsShown={modalIsShown}
+                                        setModalIsShown={setModalIsShown}
+                                    />}
+                            />
+                            <Route
+                                path="/cart"
+                                exact render={(props) =>
+                                    <CartPage
+                                        {...props}
+                                        cartData={cartData}
+                                        removeFromCartHandler={removeFromCartHandler}
+                                        incrementQuantityHandler={incrementQuantityHandler}
+                                        decrementQuantityHandler={decrementQuantityHandler}
+                                        modalIsShown={modalIsShown}
+                                        setModalIsShown={setModalIsShown}
+                                    />}
+                            />
+                            <Route
+                                path="/checkout"
+                                exact render={(props) =>
+                                    <CheckoutPage
+                                        {...props}
+                                        customerFieldChangeHandler={customerFieldChangeHandler}
+                                        customerFields={customerFields}
+                                        cartData={cartData}
+                                        confirmOrderHandler={confirmOrderHandler}
+                                        modalIsShown={modalIsShown}
+                                        setModalIsShown={setModalIsShown}
+                                    />}
+                            />
+
+                            <Route
+                                path="/about"
+                                exact render={(props) =>
+                                    <AboutPage {...props}/>}
+                            />
+                        </Switch>
+                        <Route path="/" render={(props) => <Footer {...props} />}/>
+                    </AnimatePresence>
                 </ScrollToTop>
         </main>
     );
