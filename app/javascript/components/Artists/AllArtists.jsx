@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Artist from './Artist';
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated } from 'react-spring';
+import { uid } from 'react-uid';
 
 const AllArtists = ({ allArtistsData }) => {
 
@@ -18,12 +19,12 @@ const AllArtists = ({ allArtistsData }) => {
     //
 
     const allArtistEls = allArtistsData.map(artist =>
-        <Artist artistData={artist}/>
+        <Artist key={uid(artist)} artistData={artist}/>
     )
 
     return transitions.map(({ item, key, props }) => (
 
-        <animated.div style={props} className="all-artists__container flex flex-col justify-around items-center mt-6">
+        <animated.div key={uid(key)} style={props} className="all-artists__container flex flex-col justify-around items-center mt-6">
             <div className="all-artists__header flex justify-center items-center w-full">
                 <h2 className="all-artists__header-text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
                     Artists

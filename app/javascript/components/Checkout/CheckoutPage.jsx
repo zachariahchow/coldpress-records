@@ -2,6 +2,7 @@ import React from 'react';
 import CheckoutTally from './CheckoutTally';
 import AddedOrRemovedCartModal from '../Store/AddedOrRemovedCartModal';
 import { AnimatePresence, motion } from 'framer-motion';
+import { uid, useUID } from 'react-uid';
 
 const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, confirmOrderHandler, modalIsShown, setModalIsShown }) => {
 
@@ -51,7 +52,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
                     initial={{opacity: 0}}
                     animate ={{opacity: 1}}
                     exit={{ opacity: 0}}
-                    key={cartData.cartDetails.length + 3}
+                    key={useUID()}
                     transition={{duration: 0.6}}
                     >
                 {modalIsShown.open ? <AddedOrRemovedCartModal modalIsShown={modalIsShown} setModalIsShown={setModalIsShown}/> : null}
@@ -125,7 +126,7 @@ const CheckoutPage = ({ customerFieldChangeHandler, customerFields, cartData, co
 
 
                     <div className="checkout-tally__wrapper w-full sm:w-1/2 flex flex-col justify-around items-center">
-                        { cartData.cartProducts.length ? <CheckoutTally key={Math.random * 99} cartData={cartData}/> : <div className="no-items__header w-full flex flex-col justify-center items-center">
+                        { cartData.cartProducts.length ? <CheckoutTally key={useUID()} cartData={cartData}/> : <div className="no-items__header w-full flex flex-col justify-center items-center">
                             <p className="no-items__text text-center text-xl">
                                 There are no items in your Cart.
                             </p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import CartItem from './CartItem';
+import { uid, useUID } from 'react-uid';
 
 const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decrementQuantityHandler, modalIsShown }) => {
 
@@ -20,7 +21,7 @@ const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decre
 
     const cartProductEls = cartData.cartProducts.map(prod => {
         return (
-            <CartItem key={cartData.cartDetails.length * Math.random()} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler} quantity={cartData.cartDetails.find(el => el.product_option_id == prod.product_option.id).quantity} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler} modalIsShown={modalIsShown}/>
+            <CartItem key={uid(prod)} item={prod} cartData={cartData} removeFromCartHandler={removeFromCartHandler} quantity={cartData.cartDetails.find(el => el.product_option_id == prod.product_option.id).quantity} incrementQuantityHandler={incrementQuantityHandler} decrementQuantityHandler={decrementQuantityHandler} modalIsShown={modalIsShown}/>
         )
     })
 
@@ -29,7 +30,7 @@ const Cart = ({ cartData, removeFromCartHandler, incrementQuantityHandler, decre
             initial={{opacity: 0, transform: 'scale(1.01)'}}
             animate ={{opacity: 1, transform: 'scale(1)'}}
             exit={{ opacity: 0}}
-            key={cartData.cartDetails.length + 3}
+            key={useUID()}
             transition={{duration: 0.6}}
             className="cart__container flex flex-col justify-around items-center w-full md:flex-row md:flex-wrap mb-8">
             {cartProductEls}

@@ -1,14 +1,15 @@
 import React from 'react';
+import { uid } from 'react-uid';
 
 const LatestReleases = ({ latestAlbums }) => {
 
 
     //CSS classes
 
-    const latestAlbumsEls = latestAlbums.map(album =>
+    const latestAlbumsEls = latestAlbums.map((album, index) =>
         <div
             className="album-container flex flex-col justify-center items-center w-1/2 lg:w-auto mx-4 mb-6 transform hover:scale-105 "
-            key={latestAlbums.indexOf(album) + 1}
+            key={uid(album, index)}
         >
             <p className="album-name__text text-center py-4 flex flex-col justify-center items-center"><span className="uppercase text-xl tracking-wider font-semibold">{album.name}</span> <span className="font-bold border-b-2 border-white">{album.artist_name}</span></p>
             <iframe className="latest-albums__iframe" src={`https://bandcamp.com/EmbeddedPlayer/${album.bandcamp_album_code}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/`}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { uid, useUID } from 'react-uid';
 
 const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cartData }) => {
 
@@ -61,17 +62,14 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
 
     const productOptionEls = productOptionsArr.map(opt => {
         const options = opt.values.map(value =>
-            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={opt.values.indexOf(value) + 1}>{`${value.optionValue} ($${parseInt(value.optionPrice).toFixed(2)})`}</option>
+            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={uid(opt)}>{`${value.optionValue} ($${parseInt(value.optionPrice).toFixed(2)})`}</option>
         )
 
         return (
-            <div
-                key={cartData.cartDetails.length + 7}
-                className="select__container flex flex-col justify-around items-center w-full"
-            >
+            <div className="select__container flex flex-col justify-around items-center w-full">
                 <h2 className="select__header mb-2">Select {opt.optionName}</h2>
-                <select name={opt.optionName} id={opt.optionName} data-product-id={productData.id} onChange={optionSelectChangeHandler} className="product-select block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" key={productOptionsArr.indexOf(opt) + 1}>
-                <option value={null} data-option-id={null} key={null}> </option>
+                <select name={opt.optionName} id={opt.optionName} data-product-id={productData.id} onChange={optionSelectChangeHandler} className="product-select block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <option value={null} data-option-id={null}> </option>
                     {options}
                 </select>
             </div>
@@ -85,7 +83,7 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
             initial={{opacity: 0, transform: 'scale(1.01)'}}
             animate ={{opacity: 1, transform: 'scale(1)'}}
             exit={{ opacity: 0}}
-            key={cartData.cartDetails.length + 3}
+            key={useUID()}
             transition={{duration: 0.6}}
         >
             <div className="store-item__header flex flex-col justify-center items-center w-full">

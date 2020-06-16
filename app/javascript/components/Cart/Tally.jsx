@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { uid, useUID } from 'react-uid';
 
 const Tally = ({ cartData }) => {
 
@@ -35,7 +36,7 @@ const Tally = ({ cartData }) => {
     }, null)
 
     const tallyInfoEls = productOptionsTallyInfo.map(prod =>
-        <div className="product-tally-info__container w-2/3 sm:w-1/3 flex flex-col justify-around items-center mx-2 sm:flex-row sm:flex-wrap mt-6">
+        <div key={uid(prod)} className="product-tally-info__container w-2/3 sm:w-1/3 flex flex-col justify-around items-center mx-2 sm:flex-row sm:flex-wrap mt-6">
             <div className="product-tally-info-image__container w:1/4 mr-4 flex-grow-0 mb-2">
                 <img className="object-contain" src={prod.optionImage} alt=""/>
             </div>
@@ -63,7 +64,7 @@ const Tally = ({ cartData }) => {
         initial={{opacity: 0}}
         animate ={{opacity: 1}}
         exit={{ opacity: 0}}
-        key={cartData.cartDetails.length + 3}
+        key={useUID()}
         transition={{duration: 0.55}}
         className="tally__container w-11/12 flex flex-col justify-around items-center pt-4 border-t-4 mb-6">
             <div className="tally__heade w-full flex flex-col justify-center items-center">
