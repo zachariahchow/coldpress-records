@@ -272,9 +272,6 @@ header {
 		max-height: 60vh;
 }
 
-.page-load-disclaimer__container {
-		height: auto;
-}
 
 .toggle-page__btn-container {
 		height: auto
@@ -353,4 +350,121 @@ $speed: 0.5s;
 				content: attr(data-front);
 				transform: translateY(0) rotateX(0);
 		}
+}
+
+@-webkit-keyframes animateBubble {
+		0% {
+				margin-top: 1000px;
+		}
+
+		100% {
+				margin-top: -100%;
+		}
+}
+
+@-moz-keyframes animateBubble {
+		0% {
+				margin-top: 1000px;
+		}
+
+		100% {
+				margin-top: -100%;
+		}
+}
+
+@keyframes animateBubble {
+		0% {
+				margin-top: 1000px;
+		}
+
+		100% {
+				margin-top: -100%;
+		}
+}
+
+@-webkit-keyframes sideWays {
+		0% {
+				margin-left: 0px;
+		}
+
+		100% {
+				margin-left: 50px;
+		}
+}
+
+@-moz-keyframes sideWays {
+		0% {
+				margin-left: 0px;
+		}
+
+		100% {
+				margin-left: 50px;
+		}
+}
+
+@keyframes sideWays {
+		0% {
+				margin-left: 0px;
+		}
+
+		100% {
+				margin-left: 50px;
+		}
+}
+
+.bubbles-container {
+		z-index: 0;
+}
+
+.bubbles {
+		border-radius: 50%;
+		box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+		height: 200px;
+		position: absolute;
+		width: 200px;
+		background-image: url('https://scontent.fsin3-1.fna.fbcdn.net/v/t1.0-9/p960x960/48408714_323183145072879_580883898603405312_o.jpg?_nc_cat=111&_nc_sid=7aed08&_nc_oc=AQmQBhLD-ByOPAE6HzTlc1HPFqhkcaMfRdXhP5HPmpHRMj4Yvc1dJ2xdj4vDdkWJWik&_nc_ht=scontent.fsin3-1.fna&_nc_tp=6&oh=9e291658c2f4e0f95e5f9ea69f7c5717&oe=5F0DDFFA');
+		background-repeat: none;
+		background-size: contain;
+}
+
+.bubble-one {
+		animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+		left: -5%;
+		top: 5%;
+		transform: scale(0.6);
+}
+
+.bubble-two {
+		animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+		left: 5%;
+		top: 80%;
+		transform: scale(0.4);
+}
+
+.bubble-three {
+		animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+		left: 10%;
+		top: 40%;
+		transform: scale(0.7);
+}
+
+.bubble-four {
+		animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+		left: 80%;
+		top: 10%;
+		transform: scale(0.3);
+}
+
+.bubble-five {
+		animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+		left: 90%;
+		top: 50%;
+		transform: scale(0.6);
+}
+
+.bubble-six {
+		animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+		left: 80%;
+		top: 80%;
+		transform: scale(0.3);
 }
