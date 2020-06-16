@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring'
 
+import fbIcon from '../../images/fb-black-icon.png';
+import igIcon from '../../images/ig-black-icon.png';
+import ytIcon from '../../images/yt-black-icon.png';
+import spIcon from '../../images/spotify-black-icon.png';
+import bcIcon from '../../images/bc-black-icon.png';
+
 const ArtistBio = ({ artistData, match }) => {
 
     //Spring
@@ -57,11 +63,25 @@ const ArtistBio = ({ artistData, match }) => {
                     <p className="artist-name text-center px-2 py-2 mb-2 tracking-wider uppercase text-4xl">{artistData.name}</p>
                 </div>
 
+                <div className="artist-icons__container flex mx-4 mb-4">
+                    <a href={artistData.facebook_url} target="_blank" className="artist-icon__link fb-artist-link mx-2"><img src={fbIcon} alt="" className="artist-link__icon"/></a>
+                    <a href={artistData.instagram_url} target="_blank" className="artist-icon__link ig-artist-link mx-2"><img src={igIcon} alt="" className="artist-link__icon"/></a>
+                    <a href={artistData.spotify_url} target="_blank" className="artist-icon__link sp-artist-link mx-2"><img src={spIcon} alt="" className="artist-link__icon"/></a>
+                    <a href={artistData.youtube_url} target="_blank" className="artist-icon__link yt-artist-link mx-2"><img src={ytIcon} alt="" className="artist-link__icon"/></a>
+                    <a href={artistData.bandcamp_url} target="_blank" className="artist-icon__link bc-artist-link mx-2"><img src={bcIcon} alt="" className="artist-link__icon"/></a>
+                </div>
+
                 <div className="artist-thumbnail__container mx-4 my-4 flex flex-col justify-center items-center">
                     <img className="artist-thumbnail object-cover" src={artistData.thumbnail_img} alt={artistData.name}/>
                 </div>
                 <div className="artist-bio__container flex flex-col justify-center items-center p-2 w-10/12">
                     <p className="artist-bio__text font-serif w-full my-2">{artistData.bio}</p>
+                </div>
+                <div className="artist-page__iframe-container w-full lg:w-3/4 my-6">
+                    <iframe id="ytplayer" type="text/html" width="640" height="360"
+                      src={`https://www.youtube.com/embed/${artistData.youtube_url.split('=')[1]}?autoplay=1`}
+                      frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                      {artistData.youtube_url}
                 </div>
             </div>
                 <div className="artist-releases__container flex flex-col justify-around items-center w-full lg:w-1/2 lg:min-h-screen lg:justify-start lg:border-l-2">
@@ -81,7 +101,6 @@ const ArtistBio = ({ artistData, match }) => {
                         </div>
                     )}
                 </div>
-
             </div>
         </animated.div>
     ));
