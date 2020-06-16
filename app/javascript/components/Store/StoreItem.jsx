@@ -60,18 +60,18 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
 
         }, [])
 
-    const productOptionEls = productOptionsArr.map(opt => {
+    const productOptionEls = productOptionsArr.map((opt, index) => {
         const options = opt.values.map(value =>
-            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={uid(opt)}>{`${value.optionValue} ($${parseInt(value.optionPrice).toFixed(2)})`}</option>
+            <option value={value.productOptionId} data-product-option-id={value.productOptionId} key={opt.values.indexOf(value) + 1}>{`${value.optionValue} ($${parseInt(value.optionPrice).toFixed(2)})`}</option>
         )
 
         return (
-            <div className="select__container flex flex-col justify-around items-center w-full">
-                <h2 className="select__header mb-2">Select {opt.optionName}</h2>
-                <select name={opt.optionName} id={opt.optionName} data-product-id={productData.id} onChange={optionSelectChangeHandler} className="product-select block appearance-none w-1/2 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                <option value={null} data-option-id={null}> </option>
-                    {options}
-                </select>
+            <div key={useUID() + index} className="select__container flex flex-col justify-around items-center w-full">
+                    <h2 className="select__header mb-2">Select {opt.optionName}</h2>
+                    <select name={opt.optionName} id={opt.optionName} data-product-id={productData.id} onChange={optionSelectChangeHandler} className="product-select block appearance-none w-3/5 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" key={productOptionsArr.indexOf(opt) + 1}>
+                    <option value={null} data-option-id={null} key={null}> </option>
+                        {options}
+                    </select>
             </div>
         )
     })
@@ -79,7 +79,7 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
 
     return (
         <motion.div
-            className="store-item__container w-full flex flex-col justify-around items-center sm:w-3/4 mb-6"
+            className="store-item__container w-full flex flex-col justify-around items-center sm:w-3/4 mb-12"
             initial={{opacity: 0, transform: 'scale(1.01)'}}
             animate ={{opacity: 1, transform: 'scale(1)'}}
             exit={{ opacity: 0}}
@@ -90,7 +90,7 @@ const StoreItem = ({ productData, productOptions, artist, addToCartHandler, cart
                 <h2 className="store-item__header-text uppercase tracking-widest text-xl py-2">
                     {productData.name}
                 </h2>
-                <h2 className="store-item-artist__header-text uppercase tracking-widest text-xl italic py-2">{artist.name}</h2>
+                <h2 className="store-item-artist__header-text tracking-widest text-xl italic pb-4">{artist.name}</h2>
             </div>
 
             <div className="store-item-img__container w-full flex flex-col justify-center items-center">

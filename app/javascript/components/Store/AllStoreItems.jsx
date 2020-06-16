@@ -32,9 +32,9 @@ const AllStoreItems = ({ productsData, addToCartHandler, cartData }) => {
 
     return (
         <div className="all-store-items__container flex flex-col justify-around items-center mt-6">
-            <div className="all-store-items__header flex justify-center items-center w-full">
+            <div className="all-store-items__header flex justify-center items-center w-full mb-6">
                 <h2 className="all-store-items__header-text text text-center text-2xl uppercase tracking-widest mb-2 text-black font-bold">
-                    All Items
+                    Store
                 </h2>
             </div>
             {storeItemEls}
