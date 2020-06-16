@@ -2,7 +2,7 @@
 
 ![logo](/app/assets/images/coldpress-logo.png)
 
-*The missing buddy for your favourite games*
+*A prototype site for a local indie Record Label*
 
 Visit the site at **[https://coldpress-records.herokuapp.com/](https://coldpress-records.herokuapp.com/)** *(please use Chrome for the best experience)*
 
