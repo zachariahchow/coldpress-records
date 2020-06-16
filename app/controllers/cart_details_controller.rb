@@ -1,7 +1,7 @@
 class CartDetailsController < ApplicationController
   def create
 
-      @existing_detail = CartDetail.where(product_option_id: params[:product_option_id])[0]
+      @existing_detail = CartDetail.where(product_option_id: params[:product_option_id], cart_id: params[:cart_id])[0]
 
       if @existing_detail
         @existing_detail.update(quantity: @existing_detail[:quantity] + 1)
