@@ -55,6 +55,17 @@ header {
 		height: 350px;
 }
 
+@media (min-width: 1280px) {
+		.latest-albums__iframe {
+				width: 450px;
+				height: 450px;
+		}
+
+		.album-name__text {
+				width: 450px;
+		}
+}
+
 .artist-thumbnail {
 		width: 600px;
 		height: 340px;
