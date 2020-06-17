@@ -55,7 +55,12 @@ header {
 		height: 350px;
 }
 
-@media (min-width: 1280px) {
+.album-name__text {
+		width: 350px;
+		background-color: rgba(255, 255, 255, 0.8)
+}
+
+@media (min-width: 2100px) {
 		.latest-albums__iframe {
 				width: 450px;
 				height: 450px;
@@ -246,11 +251,6 @@ header {
 		.navlink-side:hover::before {
 				transform: translateY(10px);
 		}
-}
-
-.album-name__text {
-		width: 350px;
-		background-color: rgba(255, 255, 255, 0.8)
 }
 
 //About page header custom styles
